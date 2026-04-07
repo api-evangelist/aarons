@@ -1,7 +1,11 @@
 aid: aarons
-url: https://raw.githubusercontent.com/api-evangelist/aarons/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/aarons/refs/heads/main/apis.yml
 modified: '2026-03-23'
 apis: []
 common:
   - type: Website
     url: https://www.aarons.com
+description: >-
+  Aaron's is a lease-to-own retailer of furniture, consumer electronics, home appliances,
+  and accessories serving customers across the United States and Canada.
