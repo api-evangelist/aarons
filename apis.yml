@@ -75,7 +75,7 @@ common:
     url: https://www.aarons.com
   - type: Login
     url: https://www.aarons.com/account/login
-  - type: SignUp
+  - type: Signup
     url: https://www.aarons.com/apply
   - type: Features
     data:
