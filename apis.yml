@@ -71,6 +71,8 @@ apis:
       Includes clearance and previously leased inventory.
 
 common:
+  - type: DomainSecurity
+    url: security/aarons-domain-security.yml
   - type: Website
     url: https://www.aarons.com
   - type: Login
