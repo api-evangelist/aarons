@@ -39,6 +39,11 @@ apis:
       - Lease-to-Own
       - Consumer Finance
       - Credit
+      - Application
+    tags_raw:
+      - Lease-to-Own
+      - Consumer Finance
+      - Credit
       - Applications
     humanURL: https://www.aarons.com/apply
     properties:
