@@ -1,0 +1,55 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  registry.npmjs.org search + package metadata, pypi.org, and a search of every Aaron's host for an
+  SDK or download page
+provider: Aaron's
+providerId: aarons
+summary: >-
+  Aaron's publishes no client library on any registry. There is no developer program, so there is
+  nothing to wrap. One package exists on npm that names Aaron's, but its metadata shows it was
+  published by an outside agency, not by Aaron's — it is recorded here with official:false so a
+  later round does not mistake it for a first-party SDK. NO SDKs pointer is emitted in apis.yml.
+official_package_count: 0
+registries_searched:
+  - registry: npm
+    query: aarons
+    result: no first-party package
+  - registry: pypi
+    query: aarons
+    result: 404 — no package
+  - registry: rubygems
+    result: not searched — no evidence of a Ruby surface
+  - registry: maven-central
+    result: not searched — no evidence of a JVM surface
+  - registry: nuget
+    result: >-
+      not searched. Worth a future look — the HPP service is ServiceStack (.NET) and the gateway is
+      Azure API Management, so a .NET internal client is plausible, but nothing is published.
+packages:
+  - name: aarons-component-library
+    registry: npm
+    url: https://www.npmjs.com/package/aarons-component-library
+    official: false
+    version: 1.0.1
+    published: '2022-03-04'
+    language: javascript
+    description: 'Registry description: "Component Library for Aarons.com".'
+    repository: https://github.com/SwarmAgency/aarons-component-library
+    publisher: SwarmAgency
+    maintainer_contact: a personal gmail address, not an aarons.com address
+    official_basis: >-
+      NOT first-party. The repository is under the SwarmAgency GitHub organisation (an outside
+      agency), the sole npm maintainer uses a personal gmail address, and no Aaron's property links
+      to or references this package. It is a front-end component library for the aarons.com
+      storefront, not an API client.
+    decay_note: >-
+      Last published 2022-03-04 and last modified 2022-04-11 — over four years stale, one version
+      ever released.
+github_org:
+  found: false
+  checked: [aarons, the-aarons-company, aaronsinc, aaronscompany]
+  result: all 404 via the GitHub API — Aaron's operates no public GitHub organisation.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

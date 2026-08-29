@@ -4,32 +4,61 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Aaron's
 providerId: aarons
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+generated: '2026-08-29'
+modified: '2026-08-29'
+method: probed
+reconciled: true
+source: >-
+  live unauthenticated responses from https://api.aarons.com, https://hpp.aarons.com,
+  https://www.aarons.com and https://login.aarons.com + openapi/aarons-hpp-openapi.json
+supersedes: >-
+  The 2026-05-04 bulk-sweep version, which asserted an unevidenced "Application surface throttling"
+  limit and a bot-mitigation policy nobody had probed. Both are removed; what replaces them is what
+  the hosts actually returned.
 tags:
   - Lease-to-Own
   - Retail
   - Rate Limiting
-description: Aaron's does not publish public rate-limit documentation. Endpoints are consumer-facing and
-  protected by standard application firewall and bot-mitigation policies rather than a published developer
-  rate plan.
-notes: No public developer rate-limit documentation — placeholder only.
-sources:
-  - https://www.aarons.com/apply
-responseCodes:
-  throttled: 429
-limits:
-  - name: Application surface throttling
-    scope: IP
-    metric: varies
-    limit: WAF / bot-mitigation enforced; no public numeric ceiling
-policies:
-  - name: Bot mitigation
-    description: Lease application and account-management endpoints are protected by anti-fraud and bot-mitigation
-      controls; automated traffic is not supported.
+description: >-
+  Aaron's publishes no rate limits and its hosts emit no rate-limit signal. No RateLimit-*,
+  X-RateLimit-*, Retry-After or equivalent header was returned on any probed response across four
+  hosts, and the one published contract declares no 429 response — in fact it declares no non-2xx
+  response at all. An agent calling Aaron's has no runtime way to learn it is approaching a ceiling.
+limit_count: 0
+limits: []
+response_headers_observed: []
+headers_checked:
+  - RateLimit-Limit
+  - RateLimit-Remaining
+  - RateLimit-Reset
+  - X-RateLimit-Limit
+  - X-RateLimit-Remaining
+  - X-RateLimit-Reset
+  - Retry-After
+exhaustion_status_code: undocumented
+evidence:
+  - url: https://api.aarons.com/
+    status: 404
+    detail: >-
+      Response carries only Content-Length, Content-Type and Date. No rate-limit headers, no
+      request id, no correlation header.
+  - url: https://hpp.aarons.com/openapi.json
+    status: 200
+    detail: Contract declares only 200 responses on all 15 paths — no 429, no Retry-After.
+  - url: https://www.aarons.com/s/Aarons/dw/shop/v21_3/site
+    status: 400
+    detail: >-
+      OCAPI fault, no rate-limit headers. Salesforce B2C Commerce does enforce OCAPI quotas
+      platform-side, but Aaron's publishes no quota figures and none were observable anonymously.
+  - url: https://login.aarons.com/.well-known/openid-configuration
+    status: 200
+    detail: >-
+      Okta enforces org-level rate limits, but nothing is surfaced in this response and Aaron's
+      publishes no figures.
+notes: >-
+  limit_count 0 is an honest zero — nothing is published and nothing is signalled. The absence of a
+  Retry-After on a payment-authorisation surface with no idempotency key is the finding worth
+  raising with Aaron's, since a client that retries blind has no safe backoff signal.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

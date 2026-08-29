@@ -1,0 +1,77 @@
+generated: '2026-08-29'
+method: probed
+source: openapi/aarons-hpp-openapi.json + live probes across the aarons.com estate
+provider: Aaron's
+providerId: aarons
+summary: >-
+  Aaron's publishes no versioning policy, no deprecation policy, no SLA and no status page. The two
+  version signals that exist are both implicit: the HPP contract self-declares info.version 1.0 with
+  no version in the path, and the storefront OCAPI surface is pinned to the Salesforce contract
+  version 21.3 in the URL. No StatusPage or Deprecation pointer is emitted, because neither exists.
+versioning:
+  scheme: mixed
+  surfaces:
+    - api: aarons:aarons-hpp
+      strategy: none
+      current_version: '1.0'
+      evidence: openapi/aarons-hpp-openapi.json#/info/version
+      note: >-
+        basePath is "/" — there is no version segment, no version header and no media-type version.
+        A breaking change to this contract has no way to announce itself to a caller.
+    - api: aarons:aarons-product-catalog
+      strategy: path-pinned
+      current_version: '21.3'
+      evidence:
+        url: https://www.aarons.com/s/Aarons/dw/shop/v21_3/site
+        status: 400
+      note: >-
+        Salesforce OCAPI contract version pinned in the path (/dw/shop/v21_3/) and echoed in every
+        response as `_v`. The versioning discipline here is Salesforce's, not Aaron's.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  evidence:
+    - file: openapi/aarons-hpp-openapi.json
+      detail: 'Every one of the 60 operations carries "deprecated": false. Nothing is marked deprecated.'
+status_page:
+  published: false
+  probes:
+    - url: https://status.aarons.com
+      status: '<no response> (NXDOMAIN)'
+    - url: https://aarons.statuspage.io
+      status: 302
+      detail: Redirects to https://www.atlassian.com/software/statuspage — not an Aaron's status page.
+  health_endpoints_observed:
+    - url: https://hpp.aarons.com/ping
+      status: 200
+      detail: >-
+        Returns an HTML "Ping Snapshot" page with a timestamp. A real liveness surface, but it is an
+        operational endpoint, not a customer-facing status page.
+    - path: /ping and /ping/{Name}
+      source: openapi/aarons-hpp-openapi.json
+      detail: Declared in the published contract as unauthenticated liveness operations.
+sla:
+  published: false
+changelog:
+  published: false
+  note: >-
+    https://www.aarons.com/press-releases.html (HTTP 200) is a corporate press-release page, not an
+    API or product changelog. It is deliberately NOT wired as a ChangeLog pointer.
+tls_lifecycle_finding:
+  severity: high
+  detail: >-
+    blog.aarons.com is still serving the previous wildcard *.aarons.com certificate, which expired
+    2026-08-25. Every other host on the estate (www, api, login, myaccount, privacy, hpp) has already
+    been rotated to the replacement certificate expiring 2027-01-29. The blog is linked directly from
+    the aarons.com homepage and currently fails TLS verification for every standards-compliant client.
+  evidence:
+    - url: https://blog.aarons.com/
+      status: '<no response> (TLS: certificate expired 2026-08-25)'
+    - detail: 'openssl s_client blog.aarons.com -> notAfter=Aug 25 23:59:59 2026 GMT'
+    - detail: 'openssl s_client www.aarons.com  -> notAfter=Jan 29 23:59:59 2027 GMT'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

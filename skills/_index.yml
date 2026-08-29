@@ -1,0 +1,29 @@
+generated: '2026-08-29'
+method: generated
+source: openapi/aarons-hpp-openapi.json
+provider: Aaron's
+providerId: aarons
+note: >-
+  Every operationId referenced by these skills was read out of the verbatim published contract at
+  openapi/aarons-hpp-openapi.json. No operation, parameter or field name below was invented. Aaron's
+  publishes no skills or AGENTS.md of its own — a search of every host in the estate found none.
+skills:
+  - name: aarons-hpp-payment-session
+    file: aarons-hpp-payment-session.md
+    api: aarons:aarons-hpp
+    summary: Session → customer context → device intelligence → tokenise → save → authorise.
+    operations: [CreateSession2_Post, CustomerData2_Post, MemoryBearerToken_Post, MemoryTokenGuid_Post,
+                 SaveDeviceIntelligence_Post, CreateToken_Post, SaveToken_Post, AuthorizeSession_Post]
+  - name: aarons-hpp-gateway-postbacks
+    file: aarons-hpp-gateway-postbacks.md
+    api: aarons:aarons-hpp
+    summary: Reading the three inbound Fiserv / Repay postback payloads correctly.
+    operations: [FiservPostback_Post, RepayAuthPostback_Post, RepayCardVaultPostback_Post]
+  - name: aarons-hpp-autopay-retry
+    file: aarons-hpp-autopay-retry.md
+    api: aarons:aarons-hpp
+    summary: Retrying a failed EZPay payment safely when the contract offers no idempotency.
+    operations: [AutoPayCustomerRetry_Post, UpdateCustomerRetryNotification_Post]
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

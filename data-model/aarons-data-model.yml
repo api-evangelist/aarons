@@ -1,0 +1,764 @@
+generated: '2026-08-29'
+method: derived
+source: openapi/aarons-hpp-openapi.json (definitions $ref graph)
+provider: Aaron's
+providerId: aarons
+summary: Entity graph of Aaron's Hosted Payment Page contract, derived from the $ref links between the
+  46 schema definitions in the published Swagger 2.0 document. No object reference is published by Aaron's,
+  so nothing here is enriched with prose the provider did not write — field names, types and relationships
+  only.
+entity_count: 46
+relationship_count: 28
+correlators:
+  note: The contract has no primary-key convention. Objects are correlated by two opaque GUID query/body
+    parameters that recur across operations.
+  fields:
+  - ApplicationId
+  - CreditCardPaymentResponseStatusId
+  - CreditCardPaymentStatusId
+  - CreditCardProcessorStatusId
+  - DeviceId
+  - GatewayRefId
+  - PaymentGuid
+  - SessionGuid
+  - TokenGuid
+entities:
+- name: Object
+  description: Object
+  field_count: 0
+  fields: []
+- name: CreateSession
+  description: CreateSession
+  field_count: 1
+  fields:
+  - name: SessionItem
+    type: object
+    ref: SessionItem
+- name: SessionItem
+  description: SessionItem
+  field_count: 12
+  fields:
+  - name: ApplicationId
+    type: integer
+  - name: BearerToken
+    type: string
+  - name: ButtonText
+    type: string
+  - name: DisplaySaveOnFile
+    type: boolean
+  - name: EmailAddress
+    type: string
+  - name: ExpiresAt
+    type: string
+  - name: GCID
+    type: string
+  - name: Lang
+    type: string
+  - name: LangBuster
+    type: boolean
+  - name: SaveOnFile
+    type: boolean
+  - name: Store
+    type: string
+  - name: TokenGuid
+    type: string
+- name: AuthorizeSession
+  description: AuthorizeSession
+  field_count: 1
+  fields:
+  - name: SessionGuid
+    type: string
+- name: CustomerData
+  description: CustomerData
+  field_count: 7
+  fields:
+  - name: ApplicationId
+    type: integer
+  - name: Email
+    type: string
+  - name: Language
+    type: string
+  - name: SaveOnFile
+    type: boolean
+  - name: SessionGuid
+    type: string
+  - name: TermsVersion
+    type: string
+  - name: TokenGuid
+    type: string
+- name: MemoryBearerToken
+  description: MemoryBearerToken
+  field_count: 1
+  fields:
+  - name: SessionGuid
+    type: string
+- name: MemoryTokenGuid
+  description: MemoryTokenGuid
+  field_count: 1
+  fields:
+  - name: SessionGuid
+    type: string
+- name: SaveDeviceIntelligence
+  description: SaveDeviceIntelligence
+  field_count: 3
+  fields:
+  - name: DeviceId
+    type: string
+  - name: NavigatorData
+    type: string
+  - name: TokenGuid
+    type: string
+- name: CreateToken
+  description: CreateToken
+  field_count: 9
+  fields:
+  - name: Address1
+    type: string
+  - name: AuthToken
+    type: string
+  - name: City
+    type: string
+  - name: Name
+    type: string
+  - name: PostalCode
+    type: string
+  - name: SaveOnFile
+    type: boolean
+  - name: SessionGuid
+    type: string
+  - name: State
+    type: string
+  - name: TermsVersion
+    type: string
+- name: SaveToken
+  description: SaveToken
+  field_count: 2
+  fields:
+  - name: SessionGuid
+    type: string
+  - name: TermsVersion
+    type: string
+- name: UpdateCustomerRetryNotification
+  description: UpdateCustomerRetryNotification
+  field_count: 1
+  fields:
+  - name: PaymentGuid
+    type: string
+- name: AutoPayCustomerRetry
+  description: AutoPayCustomerRetry
+  field_count: 1
+  fields:
+  - name: PaymentGuid
+    type: string
+- name: Ping
+  description: Ping
+  field_count: 1
+  fields:
+  - name: Name
+    type: string
+- name: FiservPostback
+  description: FiservPostback
+  field_count: 7
+  fields:
+  - name: AuthCode
+    type: string
+  - name: Card
+    type: object
+    ref: Card
+  - name: Error
+    type: boolean
+  - name: GatewayReason
+    type: string
+  - name: GatewayRefId
+    type: string
+  - name: Reason
+    type: string
+  - name: ZeroDollarAuth
+    type: object
+    ref: ZeroDollarAuth
+- name: Card
+  description: Card
+  field_count: 11
+  fields:
+  - name: BIN
+    type: string
+  - name: Brand
+    type: string
+  - name: Last4
+    type: string
+  - name: Name
+    type: string
+  - name: Token
+    type: string
+  - name: Masked
+    type: string
+  - name: Exp
+    type: object
+    ref: Expiration
+  - name: Address1
+    type: string
+  - name: City
+    type: string
+  - name: Region
+    type: string
+  - name: PostalCode
+    type: string
+- name: Expiration
+  description: Expiration
+  field_count: 2
+  fields:
+  - name: Month
+    type: string
+  - name: Year
+    type: string
+- name: ZeroDollarAuth
+  description: ZeroDollarAuth
+  field_count: 2
+  fields:
+  - name: CVV2
+    type: string
+  - name: AVS
+    type: object
+    ref: AVS
+- name: AVS
+  description: AVS
+  field_count: 3
+  fields:
+  - name: StreetMatch
+    type: string
+  - name: PostalCodeMatch
+    type: string
+  - name: AssociationAvsResponse
+    type: string
+- name: RepayAuthPostback
+  description: RepayAuthPostback
+  field_count: 2
+  fields:
+  - name: event_data
+    type: object
+    ref: RepayAuthEventData
+  - name: event_meta_data
+    type: object
+    ref: EventMetaData
+- name: RepayAuthEventData
+  description: RepayAuthEventData
+  field_count: 3
+  fields:
+  - name: request
+    type: object
+    ref: Request
+  - name: result
+    type: object
+    ref: Result
+  - name: timestamp
+    type: string
+- name: Request
+  description: Request
+  field_count: 15
+  fields:
+  - name: gateway_mid
+    type: string
+  - name: amount
+    type: string
+  - name: amount_cents
+    type: string
+  - name: custom_fields
+    type: object
+    ref: CustomFields
+  - name: customer_id
+    type: string
+  - name: invoice_number
+    type: string
+  - name: address
+    type: string
+  - name: card_brand
+    type: string
+  - name: card_expiration
+    type: string
+  - name: card_last_four
+    type: string
+  - name: card_bin
+    type: string
+  - name: card_name
+    type: string
+  - name: card_type
+    type: string
+  - name: nickname
+    type: string
+  - name: payment_channel
+    type: string
+- name: CustomFields
+  description: CustomFields
+  field_count: 12
+  fields:
+  - name: PaymentChannel
+    type: string
+  - name: MultiPay
+    type: string
+  - name: SavePaymentMethod
+    type: string
+  - name: Brand
+    type: string
+  - name: StoreNumber
+    type: string
+  - name: ConvenienceFee
+    type: string
+  - name: CustomerSave
+    type: string
+  - name: SaveMyCard
+    type: string
+  - name: CustomerStreet
+    type: string
+  - name: CustomerCity
+    type: string
+  - name: CustomerState
+    type: string
+  - name: CustomerZip
+    type: string
+- name: Result
+  description: Result
+  field_count: 15
+  fields:
+  - name: host_code
+    type: string
+  - name: host_url
+    type: string
+  - name: last_batch_number
+    type: string
+  - name: message
+    type: string
+  - name: message1
+    type: string
+  - name: message2
+    type: string
+  - name: original_transaction_id
+    type: string
+  - name: pn_ref
+    type: string
+  - name: resp_msg
+    type: string
+  - name: result_code
+    type: string
+  - name: auth_code
+    type: string
+  - name: avs_result
+    type: object
+    ref: AvsResult
+  - name: card_token
+    type: string
+  - name: commercial_card
+    type: string
+  - name: cv_result
+    type: string
+- name: AvsResult
+  description: AvsResult
+  field_count: 4
+  fields:
+  - name: avs_response
+    type: string
+  - name: avs_response_msg
+    type: string
+  - name: zip_match
+    type: string
+  - name: street_match
+    type: string
+- name: EventMetaData
+  description: EventMetaData
+  field_count: 2
+  fields:
+  - name: version
+    type: string
+  - name: event_type
+    type: string
+- name: RepayCardVaultPostback
+  description: RepayCardVaultPostback
+  field_count: 2
+  fields:
+  - name: event_data
+    type: object
+    ref: CardVaultEventData
+  - name: event_meta_data
+    type: object
+    ref: EventMetaData
+- name: CardVaultEventData
+  description: CardVaultEventData
+  field_count: 15
+  fields:
+  - name: gateway_mid
+    type: string
+  - name: custom_fields
+    type: object
+    ref: CustomFields
+  - name: customer_id
+    type: string
+  - name: customer_key
+    type: string
+  - name: nickname
+    type: string
+  - name: stored_payment_id
+    type: string
+  - name: card_bin
+    type: string
+  - name: card_brand
+    type: string
+  - name: card_expiration
+    type: string
+  - name: card_last_four
+    type: string
+  - name: card_type
+    type: string
+  - name: customer_name
+    type: string
+  - name: is_eligible_for_disbursement
+    type: boolean
+  - name: stored_payment_type
+    type: string
+  - name: timestamp
+    type: string
+- name: CreateSessionResponse
+  description: CreateSessionResponse
+  field_count: 3
+  fields:
+  - name: SessionGuid
+    type: string
+  - name: Version
+    type: integer
+  - name: ExpiresAt
+    type: string
+- name: AuthorizeSessionResponse
+  description: AuthorizeSessionResponse
+  field_count: 5
+  fields:
+  - name: ClientToken
+    type: string
+  - name: PublicKeyBase64
+    type: string
+  - name: PublicKey
+    type: string
+  - name: OneTimeUrl
+    type: string
+  - name: ResponseStatus
+    type: object
+    ref: ResponseStatus
+- name: ResponseStatus
+  description: ResponseStatus
+  field_count: 5
+  fields:
+  - name: ErrorCode
+    type: string
+  - name: Message
+    type: string
+  - name: StackTrace
+    type: string
+  - name: Errors
+    type: array
+  - name: Meta
+    type: object
+    ref: Dictionary_String_String_
+- name: ResponseError
+  description: ResponseError
+  field_count: 4
+  fields:
+  - name: ErrorCode
+    type: string
+  - name: FieldName
+    type: string
+  - name: Message
+    type: string
+  - name: Meta
+    type: object
+    ref: Dictionary_String_String_
+- name: Dictionary_String_String_
+  description: Dictionary<String,String>
+  field_count: 0
+  fields: []
+- name: CustomerDataResponse
+  description: CustomerDataResponse
+  field_count: 8
+  fields:
+  - name: CreditCardType
+    type: string
+  - name: Last4
+    type: string
+  - name: Expiration
+    type: string
+  - name: Result
+    type: string
+  - name: FirstName
+    type: string
+  - name: LastName
+    type: string
+  - name: DeliveryAddress
+    type: object
+    ref: DeliveryAddress
+  - name: BINData
+    type: string
+- name: DeliveryAddress
+  description: DeliveryAddress
+  field_count: 4
+  fields:
+  - name: Address1
+    type: string
+  - name: City
+    type: string
+  - name: State
+    type: string
+  - name: ZipCode
+    type: string
+- name: MemoryBearerTokenResponse
+  description: MemoryBearerTokenResponse
+  field_count: 3
+  fields:
+  - name: BearerToken
+    type: string
+  - name: Result
+    type: string
+  - name: ResponseStatus
+    type: object
+    ref: ResponseStatus
+- name: MemoryTokenGuidResponse
+  description: MemoryTokenGuidResponse
+  field_count: 3
+  fields:
+  - name: TokenGuid
+    type: string
+  - name: Result
+    type: string
+  - name: ResponseStatus
+    type: object
+    ref: ResponseStatus
+- name: SaveDeviceIntelligenceResponse
+  description: SaveDeviceIntelligenceResponse
+  field_count: 1
+  fields:
+  - name: ResponseStatus
+    type: object
+    ref: ResponseStatus
+- name: CreateTokenResponse
+  description: CreateTokenResponse
+  field_count: 8
+  fields:
+  - name: CreditCardType
+    type: string
+  - name: Last4
+    type: string
+  - name: Expiration
+    type: string
+  - name: Result
+    type: string
+  - name: FirstName
+    type: string
+  - name: LastName
+    type: string
+  - name: DeliveryAddress
+    type: object
+    ref: DeliveryAddress
+  - name: BINData
+    type: string
+- name: SaveTokenResponse
+  description: SaveTokenResponse
+  field_count: 8
+  fields:
+  - name: CreditCardType
+    type: string
+  - name: Last4
+    type: string
+  - name: Expiration
+    type: string
+  - name: Result
+    type: string
+  - name: FirstName
+    type: string
+  - name: LastName
+    type: string
+  - name: DeliveryAddress
+    type: object
+    ref: DeliveryAddress
+  - name: BINData
+    type: string
+- name: UpdateCustomerRetryNotificationResponse
+  description: UpdateCustomerRetryNotificationResponse
+  field_count: 1
+  fields:
+  - name: ResponseStatus
+    type: object
+    ref: ResponseStatus
+- name: AutoPayCustomerRetryResponse
+  description: AutoPayCustomerRetryResponse
+  field_count: 2
+  fields:
+  - name: PaymentResponse
+    type: object
+    ref: PaymentResponse
+  - name: ResponseStatus
+    type: object
+    ref: ResponseStatus
+- name: PaymentResponse
+  description: PaymentResponse
+  field_count: 9
+  fields:
+  - name: PaymentGuid
+    type: string
+  - name: PaymentStatus
+    type: object
+    ref: PaymentStatus
+  - name: IsDuplicate
+    type: boolean
+  - name: AuthorizationCode
+    type: string
+  - name: PaymentDateTime
+    type: string
+  - name: ReferenceNumber
+    type: integer
+  - name: IsRetryable
+    type: boolean
+  - name: PaymentResponseMessage
+    type: string
+  - name: MaskedAccountNumber
+    type: string
+- name: PaymentStatus
+  description: PaymentStatus
+  field_count: 4
+  fields:
+  - name: Status
+    type: string
+  - name: CreditCardPaymentStatusId
+    type: integer
+  - name: CreditCardProcessorStatusId
+    type: integer
+  - name: CreditCardPaymentResponseStatusId
+    type: integer
+- name: PingResponse
+  description: PingResponse
+  field_count: 1
+  fields:
+  - name: Result
+    type: string
+- name: FiservPostbackResponse
+  description: FiservPostbackResponse
+  field_count: 1
+  fields:
+  - name: Result
+    type: string
+- name: RepayPostbackResponse
+  description: RepayPostbackResponse
+  field_count: 1
+  fields:
+  - name: Result
+    type: string
+relationships:
+- from: CreateSession
+  to: SessionItem
+  type: has_one
+  via: SessionItem
+- from: FiservPostback
+  to: Card
+  type: has_one
+  via: Card
+- from: FiservPostback
+  to: ZeroDollarAuth
+  type: has_one
+  via: ZeroDollarAuth
+- from: Card
+  to: Expiration
+  type: has_one
+  via: Exp
+- from: ZeroDollarAuth
+  to: AVS
+  type: has_one
+  via: AVS
+- from: RepayAuthPostback
+  to: RepayAuthEventData
+  type: has_one
+  via: event_data
+- from: RepayAuthPostback
+  to: EventMetaData
+  type: has_one
+  via: event_meta_data
+- from: RepayAuthEventData
+  to: Request
+  type: has_one
+  via: request
+- from: RepayAuthEventData
+  to: Result
+  type: has_one
+  via: result
+- from: Request
+  to: CustomFields
+  type: has_one
+  via: custom_fields
+- from: Result
+  to: AvsResult
+  type: has_one
+  via: avs_result
+- from: RepayCardVaultPostback
+  to: CardVaultEventData
+  type: has_one
+  via: event_data
+- from: RepayCardVaultPostback
+  to: EventMetaData
+  type: has_one
+  via: event_meta_data
+- from: CardVaultEventData
+  to: CustomFields
+  type: has_one
+  via: custom_fields
+- from: AuthorizeSessionResponse
+  to: ResponseStatus
+  type: has_one
+  via: ResponseStatus
+- from: ResponseStatus
+  to: ResponseError
+  type: has_many
+  via: Errors
+- from: ResponseStatus
+  to: Dictionary_String_String_
+  type: has_one
+  via: Meta
+- from: ResponseError
+  to: Dictionary_String_String_
+  type: has_one
+  via: Meta
+- from: CustomerDataResponse
+  to: DeliveryAddress
+  type: has_one
+  via: DeliveryAddress
+- from: MemoryBearerTokenResponse
+  to: ResponseStatus
+  type: has_one
+  via: ResponseStatus
+- from: MemoryTokenGuidResponse
+  to: ResponseStatus
+  type: has_one
+  via: ResponseStatus
+- from: SaveDeviceIntelligenceResponse
+  to: ResponseStatus
+  type: has_one
+  via: ResponseStatus
+- from: CreateTokenResponse
+  to: DeliveryAddress
+  type: has_one
+  via: DeliveryAddress
+- from: SaveTokenResponse
+  to: DeliveryAddress
+  type: has_one
+  via: DeliveryAddress
+- from: UpdateCustomerRetryNotificationResponse
+  to: ResponseStatus
+  type: has_one
+  via: ResponseStatus
+- from: AutoPayCustomerRetryResponse
+  to: PaymentResponse
+  type: has_one
+  via: PaymentResponse
+- from: AutoPayCustomerRetryResponse
+  to: ResponseStatus
+  type: has_one
+  via: ResponseStatus
+- from: PaymentResponse
+  to: PaymentStatus
+  type: has_one
+  via: PaymentStatus
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

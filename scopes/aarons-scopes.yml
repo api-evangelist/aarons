@@ -1,0 +1,79 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  https://login.aarons.com/.well-known/openid-configuration,
+  https://login.aarons.com/.well-known/oauth-authorization-server,
+  https://login.aarons.com/oauth2/default/.well-known/openid-configuration
+provider: Aaron's
+providerId: aarons
+docs: null
+summary: >-
+  Aaron's publishes no scope reference page. Every scope below was read out of an anonymous OAuth /
+  OIDC discovery document served by Aaron's Okta custom-domain identity host. Only one scope in the
+  set is Aaron's own — interclient_access, on the custom "default" authorization server the
+  myaccount.aarons.com application authenticates against. The rest are the standard OIDC set plus
+  Okta platform scopes that ship with any Okta org and are not evidence of an Aaron's API product.
+authorization_servers:
+  - id: org
+    issuer: https://login.aarons.com
+    discovery: well-known/aarons-login-openid-configuration.json
+    scopes:
+      - name: openid
+        standard: oidc
+      - name: profile
+        standard: oidc
+      - name: email
+        standard: oidc
+      - name: address
+        standard: oidc
+      - name: phone
+        standard: oidc
+      - name: offline_access
+        standard: oauth2
+        description: Issues a refresh token.
+      - name: groups
+        standard: okta
+    note: >-
+      The /.well-known/oauth-authorization-server document on the same host additionally advertises
+      the full Okta management scope family (okta.users.*, okta.apps.*, okta.groups.* and many more).
+      Those are Okta platform administration scopes present on every Okta org — they are NOT an
+      Aaron's API surface and are deliberately not enumerated here as if they were.
+  - id: default
+    issuer: https://login.aarons.com/oauth2/default
+    discovery: well-known/aarons-login-default-openid-configuration.json
+    used_by: myaccount.aarons.com (Aaron's customer account application)
+    scopes:
+      - name: interclient_access
+        standard: custom
+        owner: aarons
+        description: >-
+          Aaron's own custom scope on the default authorization server. Its meaning is not
+          documented anywhere public; the name and the application that requests it are the only
+          available evidence. Recorded as observed, not interpreted.
+      - name: openid
+        standard: oidc
+      - name: profile
+        standard: oidc
+      - name: email
+        standard: oidc
+      - name: address
+        standard: oidc
+      - name: phone
+        standard: oidc
+      - name: offline_access
+        standard: oauth2
+      - name: device_sso
+        standard: okta
+      - name: okta.myAccount.appAuthenticator.manage
+        standard: okta
+      - name: okta.myAccount.appAuthenticator.read
+        standard: okta
+      - name: okta.myAccount.appAuthenticator.maintenance.manage
+        standard: okta
+      - name: okta.myAccount.appAuthenticator.maintenance.read
+        standard: okta
+scope_count: 8
+custom_scope_count: 1
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

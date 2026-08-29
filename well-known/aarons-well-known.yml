@@ -1,0 +1,165 @@
+generated: '2026-08-29'
+method: probed
+source: live GET probes of /.well-known/ on every Aaron's host discovered in this round
+summary: >-
+  Three real machine-readable documents are served, all on login.aarons.com — Aaron's Okta
+  custom-domain identity host. RFC 8414 authorization-server metadata, OpenID Connect discovery for
+  the org authorization server, and OpenID Connect discovery for the "default" custom authorization
+  server the myaccount.aarons.com application actually authenticates against. That is a genuine
+  WellKnown hit and the pointer is earned. Nothing else is served anywhere on the estate: no
+  security.txt on any host (so NO SecurityTxt pointer), no api-catalog, no ai-plugin.json, and no
+  A2A agent card.
+pointer_basis: >-
+  WellKnown pointer emitted on the strength of the three 200s on login.aarons.com. SecurityTxt
+  pointer NOT emitted — RFC 9116 is unimplemented estate-wide; login.aarons.com answers 405 (Okta
+  rejects the method) and every other host either 404s or returns an SPA shell.
+false_positive_watch: >-
+  myaccount.aarons.com, apply.aarons.com and jobs.aarons.com each answer HTTP 200 with a
+  single-page-application / CMS shell for EVERY /.well-known/* path, including paths that cannot
+  exist. Those 200s are recorded below as misses, not hits, with the shell noted. Any future round
+  that treats one of those 200s as a served document is wrong.
+hosts:
+  - host: https://login.aarons.com
+    note: Okta custom domain (aarons.customdomains.okta.com) — Aaron's consumer identity provider.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+        file: aarons-login-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        file: aarons-login-oauth-authorization-server.json
+      - path: /oauth2/default/.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+        file: aarons-login-default-openid-configuration.json
+        note: >-
+          Not a /.well-known/ root path, but the discovery document for the custom authorization
+          server the myaccount.aarons.com bundle names as its issuer. Recorded here because it is
+          the one that carries Aaron's own custom scope.
+      - path: /.well-known/security.txt
+        status: 405
+        body: '{"errorCode":"E0000022","errorSummary":"The endpoint does not support the provided HTTP method"}'
+      - path: /.well-known/api-catalog
+        status: 405
+        body: '{"errorCode":"E0000022","errorSummary":"The endpoint does not support the provided HTTP method"}'
+      - path: /.well-known/agent-card.json
+        status: 404
+        body: '{"errorCode":"E0000008","errorSummary":"The requested path was not found"}'
+  - host: https://www.aarons.com
+    note: Salesforce B2C Commerce (Demandware) storefront.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://api.aarons.com
+    note: >-
+      Live API gateway (Azure API Management error envelope). Every path answers a JSON 404
+      envelope rather than an HTML shell, which is how we know it is an API host and not a website.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://hpp.aarons.com
+    note: Hosted Payment Page service — publishes a real Swagger 2.0 contract at /openapi.json.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+  - host: https://myaccount.aarons.com
+    note: SPA CATCH-ALL — returns 200 with the React shell for every path. All 200s below are MISSES.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        result: miss
+        body_kind: html-spa-shell
+      - path: /.well-known/openid-configuration
+        status: 200
+        result: miss
+        body_kind: html-spa-shell
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        result: miss
+        body_kind: html-spa-shell
+      - path: /.well-known/api-catalog
+        status: 200
+        result: miss
+        body_kind: html-spa-shell
+      - path: /.well-known/agent-card.json
+        status: 200
+        result: miss
+        body_kind: html-spa-shell
+      - path: /llms.txt
+        status: 200
+        result: miss
+        body_kind: html-spa-shell
+  - host: https://apply.aarons.com
+    note: SPA CATCH-ALL — same shell behaviour as myaccount. All 200s below are MISSES.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        result: miss
+        body_kind: html-spa-shell
+      - path: /.well-known/agent-card.json
+        status: 200
+        result: miss
+        body_kind: html-spa-shell
+  - host: https://privacy.aarons.com
+    note: OneTrust-style privacy request portal.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+  - host: https://jobs.aarons.com
+    note: TalentBrew careers site — CMS CATCH-ALL, 200 with HTML for every path. All MISSES.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        result: miss
+        body_kind: html-cms-shell
+      - path: /.well-known/agent-card.json
+        status: 200
+        result: miss
+        body_kind: html-cms-shell
+  - host: https://blog.aarons.com
+    note: >-
+      Could not be probed over TLS — the host is still serving the wildcard *.aarons.com certificate
+      that EXPIRED 2026-08-25, so every standards-compliant client fails the handshake (curl exit 60,
+      WebFetch "certificate has expired"). Reachable only with verification disabled.
+    documents:
+      - path: /.well-known/security.txt
+        status: '<no response> (TLS: certificate expired)'
+      - path: /llms.txt
+        status: '<no response> (TLS: certificate expired)'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

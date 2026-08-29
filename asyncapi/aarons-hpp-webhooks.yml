@@ -1,0 +1,83 @@
+generated: '2026-08-29'
+method: derived
+source: openapi/aarons-hpp-openapi.json (postback paths and their payload definitions)
+provider: Aaron's
+providerId: aarons
+kind: webhooks
+asyncapi_published: false
+summary: >-
+  Aaron's publishes no AsyncAPI document and no event-streaming surface. It does, however, publish
+  machine-readable webhook contracts — three postback receivers with full typed payload schemas —
+  inside its Hosted Payment Page Swagger document. Read the direction carefully: these are callbacks
+  Aaron's RECEIVES from its payment processors (Fiserv and Repay), not events Aaron's emits to
+  third-party subscribers. They are recorded because they are a real, contract-backed asynchronous
+  surface on an Aaron's host, and because the payload schemas are the most detailed data Aaron's
+  publishes anywhere.
+direction: inbound
+subscriber: Aaron's (hpp.aarons.com)
+publishers:
+  - Fiserv (payment gateway)
+  - Repay (payment gateway / card vault)
+transport: HTTPS POST
+security: Bearer token in the Authorization header (same scheme as the rest of the contract)
+webhooks:
+  - id: fiserv-postback
+    path: /FiservPostback
+    operation_id: FiservPostback_Post
+    publisher: Fiserv
+    purpose: Card authorisation result callback.
+    payload:
+      schema: FiservPostback
+      fields:
+        - AuthCode
+        - Card            # BIN, Brand, Last4, Name, Token, Masked, Exp, Address1, City, Region, PostalCode
+        - Error
+        - GatewayReason
+        - GatewayRefId
+        - Reason
+        - ZeroDollarAuth  # CVV2 + AVS (StreetMatch, PostalCodeMatch, AssociationAvsResponse)
+    source: openapi/aarons-hpp-openapi.json#/paths/~1FiservPostback
+  - id: repay-auth-postback
+    path: /RepayAuthPostback
+    operation_id: RepayAuthPostback_Post
+    publisher: Repay
+    purpose: Authorisation event callback, in Repay's event envelope.
+    payload:
+      schema: RepayAuthPostback
+      envelope:
+        event_data: RepayAuthEventData  # request, result, timestamp
+        event_meta_data: EventMetaData  # version, event_type
+      request_fields: [gateway_mid, amount, amount_cents, custom_fields, customer_id, invoice_number,
+                       address, card_brand, card_expiration, card_last_four, card_bin, card_name,
+                       card_type, nickname, payment_channel]
+      result_fields: [host_code, host_url, last_batch_number, message, message1, message2,
+                      original_transaction_id, pn_ref, resp_msg, result_code, auth_code, avs_result,
+                      card_token, commercial_card, cv_result]
+    note: >-
+      event_meta_data carries a version and an event_type, so this envelope is the only versioned,
+      typed event contract anywhere in the Aaron's estate. The enumeration of event_type values is
+      not published.
+    source: openapi/aarons-hpp-openapi.json#/paths/~1RepayAuthPostback
+  - id: repay-cardvault-postback
+    path: /RepayCardVaultPostback
+    operation_id: RepayCardVaultPostback_Post
+    publisher: Repay
+    purpose: Stored-payment (card vault) lifecycle event callback.
+    payload:
+      schema: RepayCardVaultPostback
+      envelope:
+        event_data: CardVaultEventData
+        event_meta_data: EventMetaData
+      event_data_fields: [gateway_mid, custom_fields, customer_id, customer_key, nickname,
+                          stored_payment_id, card_bin, card_brand, card_expiration, card_last_four,
+                          card_type, customer_name, is_eligible_for_disbursement,
+                          stored_payment_type, timestamp]
+    source: openapi/aarons-hpp-openapi.json#/paths/~1RepayCardVaultPostback
+gaps:
+  - No AsyncAPI document anywhere on the estate.
+  - No outbound webhook subscription surface for third parties.
+  - No published event_type enumeration, no retry/redelivery policy, no signature-verification scheme
+    documented beyond the shared bearer token.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

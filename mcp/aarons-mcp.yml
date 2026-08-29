@@ -1,0 +1,186 @@
+generated: '2026-08-29'
+method: derived
+source: openapi/aarons-hpp-openapi.json — no MCP server exists; these are CANDIDATES only.
+provider: Aaron's
+providerId: aarons
+status: candidate
+summary: Aaron's ships no MCP server. Searched every host in the estate (www, api, hpp, login, myaccount,
+  apply, privacy, jobs) and found no /mcp endpoint, no .well-known MCP or OAuth protected-resource document,
+  no llms.txt advertising tools, and no vendor package on npm or PyPI. No MCPServer pointer is emitted
+  in apis.yml, because none exists. The tools below are candidates derived from the one published contract,
+  recorded so a future round can tell what an Aaron's MCP server would plausibly expose — they are NOT
+  callable.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+probes:
+- url: https://api.aarons.com/mcp
+  status: 404
+  body: '{"statusCode":404,"message":"Resource not found"}'
+- url: https://www.aarons.com/mcp
+  status: 404
+  body: HTML 404 page
+- url: https://hpp.aarons.com/mcp
+  status: 404
+- url: https://api.aarons.com/.well-known/oauth-protected-resource
+  status: 404
+- url: https://www.aarons.com/.well-known/ai-plugin.json
+  status: 404
+- url: https://www.aarons.com/llms.txt
+  status: 404
+tool_count: 15
+tools:
+- name: aarons_hpp_createsession
+  operation_id: CreateSession2_Post
+  method: POST
+  path: /CreateSession/2
+  request_schema: CreateSession
+  query_params:
+  - SessionItem
+  response_schema: CreateSessionResponse
+- name: aarons_hpp_authorizesession
+  operation_id: AuthorizeSession_Post
+  method: POST
+  path: /AuthorizeSession
+  request_schema: AuthorizeSession
+  query_params:
+  - SessionGuid
+  response_schema: AuthorizeSessionResponse
+- name: aarons_hpp_customerdata
+  operation_id: CustomerData2_Post
+  method: POST
+  path: /CustomerData/2
+  request_schema: CustomerData
+  query_params:
+  - TokenGuid
+  - SaveOnFile
+  - Email
+  - ApplicationId
+  - TermsVersion
+  - Language
+  - SessionGuid
+  response_schema: CustomerDataResponse
+- name: aarons_hpp_memorybearertoken
+  operation_id: MemoryBearerToken_Post
+  method: POST
+  path: /MemoryBearerToken
+  request_schema: MemoryBearerToken
+  query_params:
+  - SessionGuid
+  response_schema: MemoryBearerTokenResponse
+- name: aarons_hpp_memorytokenguid
+  operation_id: MemoryTokenGuid_Post
+  method: POST
+  path: /MemoryTokenGuid
+  request_schema: MemoryTokenGuid
+  query_params:
+  - SessionGuid
+  response_schema: MemoryTokenGuidResponse
+- name: aarons_hpp_savedeviceintelligence
+  operation_id: SaveDeviceIntelligence_Post
+  method: POST
+  path: /SaveDeviceIntelligence
+  request_schema: SaveDeviceIntelligence
+  query_params:
+  - TokenGuid
+  - DeviceId
+  - NavigatorData
+  response_schema: SaveDeviceIntelligenceResponse
+- name: aarons_hpp_createtoken
+  operation_id: CreateToken_Post
+  method: POST
+  path: /CreateToken
+  request_schema: CreateToken
+  query_params:
+  - SessionGuid
+  - Name
+  - Address1
+  - City
+  - State
+  - PostalCode
+  - SaveOnFile
+  - AuthToken
+  - TermsVersion
+  response_schema: CreateTokenResponse
+- name: aarons_hpp_savetoken
+  operation_id: SaveToken_Post
+  method: POST
+  path: /SaveToken
+  request_schema: SaveToken
+  query_params:
+  - SessionGuid
+  - TermsVersion
+  response_schema: SaveTokenResponse
+- name: aarons_hpp_updatecustomerretrynotification
+  operation_id: UpdateCustomerRetryNotification_Post
+  method: POST
+  path: /UpdateCustomerRetryNotification
+  request_schema: UpdateCustomerRetryNotification
+  query_params:
+  - PaymentGuid
+  response_schema: UpdateCustomerRetryNotificationResponse
+- name: aarons_hpp_autopaycustomerretry
+  operation_id: AutoPayCustomerRetry_Post
+  method: POST
+  path: /AutoPayCustomerRetry
+  request_schema: AutoPayCustomerRetry
+  query_params:
+  - PaymentGuid
+  response_schema: AutoPayCustomerRetryResponse
+- name: aarons_hpp_ping
+  operation_id: Ping_Post
+  method: POST
+  path: /ping
+  request_schema: Ping
+  query_params:
+  - Name
+  response_schema: PingResponse
+- name: aarons_hpp_ping
+  operation_id: PingName_Post
+  method: POST
+  path: /ping/{Name}
+  request_schema: Ping
+  query_params: []
+  response_schema: PingResponse
+- name: aarons_hpp_fiservpostback
+  operation_id: FiservPostback_Post
+  method: POST
+  path: /FiservPostback
+  request_schema: FiservPostback
+  query_params:
+  - AuthCode
+  - Card
+  - GatewayRefId
+  - Error
+  - Reason
+  - GatewayReason
+  - ZeroDollarAuth
+  response_schema: FiservPostbackResponse
+- name: aarons_hpp_repayauthpostback
+  operation_id: RepayAuthPostback_Post
+  method: POST
+  path: /RepayAuthPostback
+  request_schema: RepayAuthPostback
+  query_params:
+  - event_data
+  - event_meta_data
+  response_schema: RepayPostbackResponse
+- name: aarons_hpp_repaycardvaultpostback
+  operation_id: RepayCardVaultPostback_Post
+  method: POST
+  path: /RepayCardVaultPostback
+  request_schema: RepayCardVaultPostback
+  query_params:
+  - event_data
+  - event_meta_data
+  response_schema: RepayPostbackResponse
+caveat: Every candidate below is auth-gated behind a bearer token Aaron's does not issue to third parties,
+  and most of them move money. A hypothetical MCP server over this contract would need consequence gating
+  and a reversal story before it was safe to expose — see the reversibility block in conventions/aarons-conventions.yml.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

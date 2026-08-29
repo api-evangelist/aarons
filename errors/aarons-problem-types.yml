@@ -1,0 +1,101 @@
+generated: '2026-08-29'
+method: derived
+source: >-
+  openapi/aarons-hpp-openapi.json (definitions.ResponseStatus / ResponseError) + live unauthenticated
+  probes of https://api.aarons.com, https://www.aarons.com/s/Aarons/dw/shop/v21_3/ and
+  https://login.aarons.com
+provider: Aaron's
+providerId: aarons
+format: vendor
+rfc9457: false
+summary: >-
+  Aaron's publishes no error reference. Three distinct error envelopes are nonetheless observable
+  across the estate, each one from a different platform Aaron's runs, and none of them is RFC 9457
+  problem+json. An agent integrating across Aaron's surfaces has to parse three different shapes.
+envelopes:
+  - id: hpp-responsestatus
+    surface: https://hpp.aarons.com
+    media_type: application/json
+    shape: ServiceStack ResponseStatus
+    source: openapi/aarons-hpp-openapi.json#/definitions/ResponseStatus
+    fields:
+      - name: ErrorCode
+        type: string
+        description: Vendor error code string. No published registry of values.
+      - name: Message
+        type: string
+      - name: StackTrace
+        type: string
+        note: >-
+          A stack-trace field is declared in the published contract. If it is ever populated in
+          production responses it is an information-disclosure exposure worth raising with Aaron's.
+      - name: Errors
+        type: array
+        items: ResponseError
+      - name: Meta
+        type: object
+    nested:
+      - name: ResponseError
+        fields: [ErrorCode, FieldName, Message, Meta]
+        description: Per-field validation errors, keyed by FieldName.
+    note: >-
+      The Swagger document declares ONLY 200 responses on all 15 paths — no 4xx or 5xx responses are
+      documented anywhere in the contract. The error envelope above is discoverable only because the
+      ResponseStatus/ResponseError definitions are reachable from the success response schemas.
+      This is the single largest contract-quality gap in the HPP spec.
+  - id: apim-envelope
+    surface: https://api.aarons.com
+    media_type: application/json
+    shape: Azure API Management default fault
+    method: probed
+    example_observed: '{ "statusCode": 404, "message": "Resource not found" }'
+    fields:
+      - name: statusCode
+        type: integer
+      - name: message
+        type: string
+    evidence:
+      - url: https://api.aarons.com/account
+        status: 404
+      - url: https://api.aarons.com/ezpay
+        status: 404
+  - id: ocapi-fault
+    surface: https://www.aarons.com/s/Aarons/dw/shop/v21_3/
+    media_type: application/json
+    shape: Salesforce B2C Commerce OCAPI fault
+    method: probed
+    example_observed: '{"_v":"21.3","fault":{"type":"MissingClientIdException","message":"The client ID is missing."}}'
+    fields:
+      - name: _v
+        type: string
+        description: OCAPI contract version echoed on every response (observed 21.3).
+      - name: fault.type
+        type: string
+        description: OCAPI exception class name — a real, documented, standardised code space.
+      - name: fault.message
+        type: string
+    evidence:
+      - url: https://www.aarons.com/s/Aarons/dw/shop/v21_3/site
+        status: 400
+    note: >-
+      This envelope is the Salesforce Commerce Cloud standard, not Aaron's own. It is recorded
+      because it is what a client calling Aaron's storefront API actually receives.
+  - id: okta-error
+    surface: https://login.aarons.com
+    media_type: application/json
+    shape: Okta API error
+    method: probed
+    example_observed: '{"errorCode":"E0000008","errorSummary":"The requested path was not found","errorLink":"E0000008","errorId":"...","errorCauses":[]}'
+    fields: [errorCode, errorSummary, errorLink, errorId, errorCauses]
+    evidence:
+      - url: https://login.aarons.com/.well-known/agent-card.json
+        status: 404
+      - url: https://login.aarons.com/.well-known/security.txt
+        status: 405
+gaps:
+  - No documented 4xx/5xx responses in the one published contract.
+  - No error-code registry, no remediation guidance, no problem+json.
+  - Four different error shapes across four hosts, with no cross-walk published.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
