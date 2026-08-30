@@ -107,6 +107,12 @@ apis:
       - Payments
       - Tokenization
       - Card Vault
+      - Webhook
+      - Lease-to-Own
+    tags_raw:
+      - Payments
+      - Tokenization
+      - Card Vault
       - Webhooks
       - Lease-to-Own
     humanURL: https://www.aarons.com/ezpay.html
