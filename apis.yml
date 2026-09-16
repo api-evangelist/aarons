@@ -1,6 +1,5 @@
 aid: aarons
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/aarons/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/aarons/refs/heads/main/apis.yml
 name: Aaron's
 type: Index
 deliveryModel:
@@ -28,253 +27,411 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aarons.png
 tags:
+- Lease-to-Own
+- Retail
+- Furniture
+- Electronics
+- Appliances
+- Consumer Finance
+- Fortune 1000
+description: Aaron's is a lease-to-own retailer of furniture, consumer electronics, home appliances, and
+  accessories serving customers across the United States and Canada. They provide flexible payment options
+  including rent-to-own leasing with instant approval, online account management, and EZPay automatic
+  payments.
+created: '2026-04-19'
+modified: '2026-09-16'
+specificationVersion: '0.23'
+apis:
+- aid: aarons:aarons-lease-application
+  name: Aaron's Lease Application
+  tags:
   - Lease-to-Own
+  - Consumer Finance
+  - Credit
+  - Application
+  tags_raw:
+  - Lease-to-Own
+  - Consumer Finance
+  - Credit
+  - Applications
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  properties:
+  - url: https://www.aarons.com/apply
+    type: Website
+  description: Aaron's online lease application and approval system enabling customers to apply for lease-to-own
+    financing before shopping. Provides instant approval decisions and leasing power discovery for furniture,
+    electronics, and appliances.
+- aid: aarons:aarons-account-management
+  name: Aaron's Account Management
+  tags:
+  - Account Management
+  - Payments
+  - Lease Management
+  humanURL: https://myaccount.aarons.com
+  baseURL: https://api.aarons.com/account
+  properties:
+  - url: https://www.aarons.com
+    type: Website
+  description: Aaron's online account management portal for customers to manage their lease accounts,
+    make payments, set up EZPay automatic payments, track orders, and manage lease and payment information.
+- aid: aarons:aarons-product-catalog
+  name: Aaron's Product Catalog
+  tags:
   - Retail
   - Furniture
   - Electronics
   - Appliances
-  - Consumer Finance
-  - Fortune 1000
-description: >-
-  Aaron's is a lease-to-own retailer of furniture, consumer electronics, home appliances,
-  and accessories serving customers across the United States and Canada. They provide
-  flexible payment options including rent-to-own leasing with instant approval,
-  online account management, and EZPay automatic payments.
-created: '2026-04-19'
-modified: '2026-08-29'
-specificationVersion: '0.23'
-apis:
-  - aid: aarons:aarons-lease-application
-    name: Aaron's Lease Application
-    tags:
-      - Lease-to-Own
-      - Consumer Finance
-      - Credit
-      - Application
-    tags_raw:
-      - Lease-to-Own
-      - Consumer Finance
-      - Credit
-      - Applications
-    humanURL: https://www.aarons.com/apply
-    baseURL: https://api.aarons.com/onboarding
-    properties:
-      - url: https://www.aarons.com/apply
-        type: Website
-    description: >-
-      Aaron's online lease application and approval system enabling customers to
-      apply for lease-to-own financing before shopping. Provides instant approval
-      decisions and leasing power discovery for furniture, electronics, and appliances.
-
-  - aid: aarons:aarons-account-management
-    name: Aaron's Account Management
-    tags:
-      - Account Management
-      - Payments
-      - Lease Management
-    humanURL: https://myaccount.aarons.com
-    baseURL: https://api.aarons.com/account
-    properties:
-      - url: https://www.aarons.com
-        type: Website
-    description: >-
-      Aaron's online account management portal for customers to manage their lease
-      accounts, make payments, set up EZPay automatic payments, track orders, and
-      manage lease and payment information.
-
-  - aid: aarons:aarons-product-catalog
-    name: Aaron's Product Catalog
-    tags:
-      - Retail
-      - Furniture
-      - Electronics
-      - Appliances
-      - Lease-to-Own
-    humanURL: https://www.aarons.com
-    baseURL: https://www.aarons.com/s/Aarons/dw/shop/v21_3
-    properties:
-      - url: https://www.aarons.com
-        type: Website
-    description: >-
-      Aaron's lease-to-own product catalog covering furniture (bedroom, living room,
-      dining), electronics (TVs, laptops, gaming), and appliances (washers, dryers,
-      refrigerators) from top brands including Ashley Furniture, Samsung, Sony, and GE.
-      Includes clearance and previously leased inventory.
-
-  - aid: aarons:aarons-hpp
-    name: Aaron's Hosted Payment Page (HPP)
-    tags:
-      - Payments
-      - Tokenization
-      - Card Vault
-      - Webhook
-      - Lease-to-Own
-    tags_raw:
-      - Payments
-      - Tokenization
-      - Card Vault
-      - Webhooks
-      - Lease-to-Own
-    humanURL: https://www.aarons.com/ezpay.html
-    baseURL: https://hpp.aarons.com
-    properties:
-      - url: openapi/aarons-hpp-openapi.json
-        type: OpenAPI
-      - url: overlays/aarons-hpp-overlay.yaml
-        type: Overlay
-      - url: asyncapi/aarons-hpp-webhooks.yml
-        type: Webhooks
-      - url: data-model/aarons-data-model.yml
-        type: DataModel
-      - url: https://hpp.aarons.com/openapi.json
-        type: Website
-    description: >-
-      Aaron's Hosted Payment Page service — the only surface on the Aaron's estate that publishes a
-      machine-readable API contract. A Swagger 2.0 document is served anonymously at
-      https://hpp.aarons.com/openapi.json describing 15 paths: payment-session creation, customer
-      context, device-intelligence capture for fraud screening, card tokenization and storage,
-      zero-dollar authorization with AVS/CVV2 verification, EZPay retry, and three inbound postback
-      receivers for the Fiserv and Repay payment gateways. The contract self-identifies as
-      host hpp.aarons.com, and Aaron's own customer application at myaccount.aarons.com references
-      the same host, so ownership is established from the document itself and not from the fetch URL.
-      Bearer-token auth; Aaron's issues no third-party credentials and publishes no documentation.
-
-common:
+  - Lease-to-Own
+  humanURL: https://www.aarons.com
+  baseURL: https://www.aarons.com/s/Aarons/dw/shop/v21_3
+  properties:
+  - url: https://www.aarons.com
+    type: Website
+  description: Aaron's lease-to-own product catalog covering furniture (bedroom, living room, dining),
+    electronics (TVs, laptops, gaming), and appliances (washers, dryers, refrigerators) from top brands
+    including Ashley Furniture, Samsung, Sony, and GE. Includes clearance and previously leased inventory.
+- aid: aarons:aarons-authorizesession-api
+  name: Aaron's Authorize Session API
+  description: The AuthorizeSession API from Aaron's — 1 operation(s) for authorizesession.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - AuthorizeSession
+  properties:
   - type: OpenAPI
-    url: openapi/aarons-hpp-openapi.json
-  - type: WellKnown
-    url: well-known/aarons-well-known.yml
-  - type: Authentication
-    url: authentication/aarons-authentication.yml
-  - type: OAuthScopes
-    url: scopes/aarons-scopes.yml
-  - type: Conformance
-    url: conformance/aarons-conformance.yml
-  - type: ErrorCatalog
-    url: errors/aarons-problem-types.yml
-  - type: Lifecycle
-    url: lifecycle/aarons-lifecycle.yml
-  - type: Conventions
-    url: conventions/aarons-conventions.yml
-  - type: DataModel
-    url: data-model/aarons-data-model.yml
-  - type: Overlay
-    url: overlays/aarons-hpp-overlay.yaml
+    url: openapi/aarons-authorizesession-api-openapi.yml
   - type: Webhooks
     url: asyncapi/aarons-hpp-webhooks.yml
-  - type: AgentSkill
-    url: skills/_index.yml
-  - type: LLMsTxt
-    url: llms/aarons-llms.txt
-  - type: Packages
-    url: packages/aarons-packages.yml
-  - type: Plans
-    url: plans/aarons-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/aarons-rate-limits.yml
-  - type: TermsOfService
-    url: https://www.aarons.com/terms-of-service.html
-  - type: PrivacyPolicy
-    url: https://www.aarons.com/privacy-policy.html
-  - type: Support
-    url: https://www.aarons.com/contact
-  - type: HelpCenter
-    url: https://www.aarons.com/FAQ
-  - type: DomainSecurity
-    url: security/aarons-domain-security.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
   - type: Website
-    url: https://www.aarons.com
-  - type: Login
-    url: https://login.aarons.com
-  - type: Signup
-    url: https://www.aarons.com/apply
-  - type: Features
-    data:
-      - name: Instant Lease Approval
-        description: >-
-          Online lease application with instant approval for customers to discover
-          their leasing power before shopping in-store or online.
-      - name: EZPay Automatic Payments
-        description: >-
-          Automatic payment setup (EZPay) for convenient, scheduled lease payment
-          processing without manual intervention.
-      - name: Online Payment Processing
-        description: >-
-          Online payment portal for customers to make one-time or recurring lease
-          payments through the Aaron's website.
-      - name: Express Delivery
-        description: >-
-          Express delivery in 2-3 days for eligible products to customer homes,
-          with professional installation and setup.
-      - name: Store Locator
-        description: >-
-          Store locator to find nearby Aaron's locations for in-store shopping,
-          pickup, and customer service.
-      - name: Account Management Portal
-        description: >-
-          Online account portal for tracking orders, managing lease details, viewing
-          payment history, and saving favorite products.
-      - name: Previously Leased Inventory
-        description: >-
-          Clearance and previously leased product inventory available at reduced
-          lease rates for budget-conscious customers.
-  - type: UseCases
-    data:
-      - name: Furniture Lease-to-Own
-        description: >-
-          Customers acquiring bedroom sets, sofas, sectionals, and dining furniture
-          through flexible lease-to-own payment plans.
-      - name: Electronics Access
-        description: >-
-          Consumers accessing TVs, laptops, gaming consoles, and audio equipment
-          through affordable weekly or monthly lease payments.
-      - name: Appliance Leasing
-        description: >-
-          Households obtaining washers, dryers, refrigerators, and ranges through
-          lease-to-own options with delivery and installation.
-      - name: Credit-Challenged Consumer Financing
-        description: >-
-          Consumers with limited or poor credit history accessing household goods
-          through Aaron's flexible lease-to-own programs.
-      - name: Temporary Furnishing
-        description: >-
-          Short-term furniture and appliance needs for relocating individuals or
-          temporary housing situations via lease agreements.
-  - type: Integrations
-    data:
-      - name: BrandsMart USA
-        description: >-
-          The Aaron's Company subsidiary BrandsMart USA, providing consumer electronics
-          and appliance retail with lease-to-own financing.
-      - name: Salesforce B2C Commerce (Demandware)
-        description: >-
-          The aarons.com storefront runs on Salesforce B2C Commerce. Its Open Commerce API
-          (OCAPI) 21.3 Shop surface is live at /s/Aarons/dw/shop/v21_3/ and returns a standard
-          OCAPI fault when called without a client ID. Probed 2026-08-29.
-      - name: Okta
-        description: >-
-          Customer identity runs on Okta at login.aarons.com (custom domain), serving anonymous
-          OpenID Connect and RFC 8414 discovery documents. Probed 2026-08-29.
-      - name: Azure API Management
-        description: >-
-          api.aarons.com is an Azure API Management gateway fronting the account, home, ezpay,
-          onboarding, support and Acadia service bases named in Aaron's own customer application
-          bundle. Live and undocumented. Probed 2026-08-29.
-      - name: Fiserv
-        description: >-
-          Payment gateway. Aaron's Hosted Payment Page publishes an inbound /FiservPostback
-          receiver with a typed authorisation-result payload in its own Swagger contract.
-      - name: Repay
-        description: >-
-          Payment gateway and card vault. Aaron's HPP publishes inbound /RepayAuthPostback and
-          /RepayCardVaultPostback receivers with versioned event envelopes.
-      - name: Google Tag Manager
-        description: >-
-          Analytics and tracking integration via Google Tag Manager for website
-          behavior analysis and marketing optimization.
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-autopaycustomerretry-api
+  name: Aaron's Auto Pay Customer Retry API
+  description: The AutoPayCustomerRetry API from Aaron's — 1 operation(s) for autopaycustomerretry.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - AutoPayCustomerRetry
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-autopaycustomerretry-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-createsession-api
+  name: Aaron's Create Session API
+  description: The CreateSession API from Aaron's — 1 operation(s) for createsession.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - CreateSession
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-createsession-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-createtoken-api
+  name: Aaron's Create Token API
+  description: The CreateToken API from Aaron's — 1 operation(s) for createtoken.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - CreateToken
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-createtoken-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-customerdata-api
+  name: Aaron's Customer Data API
+  description: The CustomerData API from Aaron's — 1 operation(s) for customerdata.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - CustomerData
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-customerdata-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-fiservpostback-api
+  name: Aaron's Fiserv Postback API
+  description: The FiservPostback API from Aaron's — 1 operation(s) for fiservpostback.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - FiservPostback
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-fiservpostback-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-memorybearertoken-api
+  name: Aaron's Memory Bearer Token API
+  description: The MemoryBearerToken API from Aaron's — 1 operation(s) for memorybearertoken.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - MemoryBearerToken
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-memorybearertoken-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-memorytokenguid-api
+  name: Aaron's Memory Token Guid API
+  description: The MemoryTokenGuid API from Aaron's — 1 operation(s) for memorytokenguid.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - MemoryTokenGuid
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-memorytokenguid-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-ping-api
+  name: Aaron's Ping API
+  description: The ping API from Aaron's — 2 operation(s) for ping.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - ping
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-ping-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-repayauthpostback-api
+  name: Aaron's Repay Auth Postback API
+  description: The RepayAuthPostback API from Aaron's — 1 operation(s) for repayauthpostback.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - RepayAuthPostback
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-repayauthpostback-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-repaycardvaultpostback-api
+  name: Aaron's Repay Card Vault Postback API
+  description: The RepayCardVaultPostback API from Aaron's — 1 operation(s) for repaycardvaultpostback.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - RepayCardVaultPostback
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-repaycardvaultpostback-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-savedeviceintelligence-api
+  name: Aaron's Save Device Intelligence API
+  description: The SaveDeviceIntelligence API from Aaron's — 1 operation(s) for savedeviceintelligence.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - SaveDeviceIntelligence
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-savedeviceintelligence-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-savetoken-api
+  name: Aaron's Save Token API
+  description: The SaveToken API from Aaron's — 1 operation(s) for savetoken.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - SaveToken
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-savetoken-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-updatecustomerretrynotification-api
+  name: Aaron's Update Customer Retry Notification API
+  description: The UpdateCustomerRetryNotification API from Aaron's — 1 operation(s) for updatecustomerretrynotification.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - UpdateCustomerRetryNotification
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-updatecustomerretrynotification-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+common:
+- type: OpenAPI
+  url: openapi/_original/aarons-hpp-openapi.json
+- type: WellKnown
+  url: well-known/aarons-well-known.yml
+- type: Authentication
+  url: authentication/aarons-authentication.yml
+- type: OAuthScopes
+  url: scopes/aarons-scopes.yml
+- type: Conformance
+  url: conformance/aarons-conformance.yml
+- type: ErrorCatalog
+  url: errors/aarons-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/aarons-lifecycle.yml
+- type: Conventions
+  url: conventions/aarons-conventions.yml
+- type: DataModel
+  url: data-model/aarons-data-model.yml
+- type: Overlay
+  url: overlays/aarons-hpp-overlay.yaml
+- type: Webhooks
+  url: asyncapi/aarons-hpp-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/aarons-llms.txt
+- type: Packages
+  url: packages/aarons-packages.yml
+- type: Plans
+  url: plans/aarons-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/aarons-rate-limits.yml
+- type: TermsOfService
+  url: https://www.aarons.com/terms-of-service.html
+- type: PrivacyPolicy
+  url: https://www.aarons.com/privacy-policy.html
+- type: Support
+  url: https://www.aarons.com/contact
+- type: HelpCenter
+  url: https://www.aarons.com/FAQ
+- type: DomainSecurity
+  url: security/aarons-domain-security.yml
+- type: Website
+  url: https://www.aarons.com
+- type: Login
+  url: https://login.aarons.com
+- type: Signup
+  url: https://www.aarons.com/apply
+- type: Features
+  data:
+  - name: Instant Lease Approval
+    description: Online lease application with instant approval for customers to discover their leasing
+      power before shopping in-store or online.
+  - name: EZPay Automatic Payments
+    description: Automatic payment setup (EZPay) for convenient, scheduled lease payment processing without
+      manual intervention.
+  - name: Online Payment Processing
+    description: Online payment portal for customers to make one-time or recurring lease payments through
+      the Aaron's website.
+  - name: Express Delivery
+    description: Express delivery in 2-3 days for eligible products to customer homes, with professional
+      installation and setup.
+  - name: Store Locator
+    description: Store locator to find nearby Aaron's locations for in-store shopping, pickup, and customer
+      service.
+  - name: Account Management Portal
+    description: Online account portal for tracking orders, managing lease details, viewing payment history,
+      and saving favorite products.
+  - name: Previously Leased Inventory
+    description: Clearance and previously leased product inventory available at reduced lease rates for
+      budget-conscious customers.
+- type: UseCases
+  data:
+  - name: Furniture Lease-to-Own
+    description: Customers acquiring bedroom sets, sofas, sectionals, and dining furniture through flexible
+      lease-to-own payment plans.
+  - name: Electronics Access
+    description: Consumers accessing TVs, laptops, gaming consoles, and audio equipment through affordable
+      weekly or monthly lease payments.
+  - name: Appliance Leasing
+    description: Households obtaining washers, dryers, refrigerators, and ranges through lease-to-own
+      options with delivery and installation.
+  - name: Credit-Challenged Consumer Financing
+    description: Consumers with limited or poor credit history accessing household goods through Aaron's
+      flexible lease-to-own programs.
+  - name: Temporary Furnishing
+    description: Short-term furniture and appliance needs for relocating individuals or temporary housing
+      situations via lease agreements.
+- type: Integrations
+  data:
+  - name: BrandsMart USA
+    description: The Aaron's Company subsidiary BrandsMart USA, providing consumer electronics and appliance
+      retail with lease-to-own financing.
+  - name: Salesforce B2C Commerce (Demandware)
+    description: The aarons.com storefront runs on Salesforce B2C Commerce. Its Open Commerce API (OCAPI)
+      21.3 Shop surface is live at /s/Aarons/dw/shop/v21_3/ and returns a standard OCAPI fault when called
+      without a client ID. Probed 2026-08-29.
+  - name: Okta
+    description: Customer identity runs on Okta at login.aarons.com (custom domain), serving anonymous
+      OpenID Connect and RFC 8414 discovery documents. Probed 2026-08-29.
+  - name: Azure API Management
+    description: api.aarons.com is an Azure API Management gateway fronting the account, home, ezpay,
+      onboarding, support and Acadia service bases named in Aaron's own customer application bundle. Live
+      and undocumented. Probed 2026-08-29.
+  - name: Fiserv
+    description: Payment gateway. Aaron's Hosted Payment Page publishes an inbound /FiservPostback receiver
+      with a typed authorisation-result payload in its own Swagger contract.
+  - name: Repay
+    description: Payment gateway and card vault. Aaron's HPP publishes inbound /RepayAuthPostback and
+      /RepayCardVaultPostback receivers with versioned event envelopes.
+  - name: Google Tag Manager
+    description: Analytics and tracking integration via Google Tag Manager for website behavior analysis
+      and marketing optimization.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 x-enrichment:
   date: '2026-08-29'
   status: enriched
@@ -283,15 +440,14 @@ x-enrichment:
 x-coverage:
   state: covered
   reason: contract-discovered
-  detail: >-
-    STEP 0b contract discovery found a real Swagger 2.0 document at https://hpp.aarons.com/openapi.json
+  detail: STEP 0b contract discovery found a real Swagger 2.0 document at https://hpp.aarons.com/openapi.json
     (15 paths, self-declaring host hpp.aarons.com) plus three anonymous OAuth/OIDC discovery documents
     on login.aarons.com, after the storefront host returned 404 for every spec path.
   evidence:
-    - url: https://hpp.aarons.com/openapi.json
-      status: 200
-    - url: https://login.aarons.com/.well-known/openid-configuration
-      status: 200
-    - url: https://www.aarons.com/s/Aarons/dw/shop/v21_3/site
-      status: 400
+  - url: https://hpp.aarons.com/openapi.json
+    status: 200
+  - url: https://login.aarons.com/.well-known/openid-configuration
+    status: 200
+  - url: https://www.aarons.com/s/Aarons/dw/shop/v21_3/site
+    status: 400
   checked: '2026-08-29'
