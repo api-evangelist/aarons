@@ -59,7 +59,8 @@ apis:
   properties:
   - url: https://www.aarons.com/apply
     type: Website
-  description: Aaron's online lease application and approval system enabling customers to apply for lease-to-own
+  description: >-
+    Aaron's online lease application and approval system enabling customers to apply for lease-to-own
     financing before shopping. Provides instant approval decisions and leasing power discovery for furniture,
     electronics, and appliances.
 - aid: aarons:aarons-account-management
@@ -73,8 +74,9 @@ apis:
   properties:
   - url: https://www.aarons.com
     type: Website
-  description: Aaron's online account management portal for customers to manage their lease accounts,
-    make payments, set up EZPay automatic payments, track orders, and manage lease and payment information.
+  description: >-
+    Aaron's online account management portal for customers to manage their lease accounts, make payments,
+    set up EZPay automatic payments, track orders, and manage lease and payment information.
 - aid: aarons:aarons-product-catalog
   name: Aaron's Product Catalog
   tags:
@@ -88,9 +90,10 @@ apis:
   properties:
   - url: https://www.aarons.com
     type: Website
-  description: Aaron's lease-to-own product catalog covering furniture (bedroom, living room, dining),
-    electronics (TVs, laptops, gaming), and appliances (washers, dryers, refrigerators) from top brands
-    including Ashley Furniture, Samsung, Sony, and GE. Includes clearance and previously leased inventory.
+  description: >-
+    Aaron's lease-to-own product catalog covering furniture (bedroom, living room, dining), electronics
+    (TVs, laptops, gaming), and appliances (washers, dryers, refrigerators) from top brands including
+    Ashley Furniture, Samsung, Sony, and GE. Includes clearance and previously leased inventory.
 - aid: aarons:aarons-authorizesession-api
   name: Aaron's Authorize Session API
   description: The AuthorizeSession API from Aaron's — 1 operation(s) for authorizesession.
@@ -123,22 +126,6 @@ apis:
     url: data-model/aarons-data-model.yml
   - type: Website
     url: https://hpp.aarons.com/openapi.json
-- aid: aarons:aarons-createsession-api
-  name: Aaron's Create Session API
-  description: The CreateSession API from Aaron's — 1 operation(s) for createsession.
-  humanURL: https://www.aarons.com/apply
-  baseURL: https://api.aarons.com/onboarding
-  tags:
-  - CreateSession
-  properties:
-  - type: OpenAPI
-    url: openapi/aarons-createsession-api-openapi.yml
-  - type: Webhooks
-    url: asyncapi/aarons-hpp-webhooks.yml
-  - type: DataModel
-    url: data-model/aarons-data-model.yml
-  - type: Website
-    url: https://hpp.aarons.com/openapi.json
 - aid: aarons:aarons-createtoken-api
   name: Aaron's Create Token API
   description: The CreateToken API from Aaron's — 1 operation(s) for createtoken.
@@ -149,22 +136,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/aarons-createtoken-api-openapi.yml
-  - type: Webhooks
-    url: asyncapi/aarons-hpp-webhooks.yml
-  - type: DataModel
-    url: data-model/aarons-data-model.yml
-  - type: Website
-    url: https://hpp.aarons.com/openapi.json
-- aid: aarons:aarons-customerdata-api
-  name: Aaron's Customer Data API
-  description: The CustomerData API from Aaron's — 1 operation(s) for customerdata.
-  humanURL: https://www.aarons.com/apply
-  baseURL: https://api.aarons.com/onboarding
-  tags:
-  - CustomerData
-  properties:
-  - type: OpenAPI
-    url: openapi/aarons-customerdata-api-openapi.yml
   - type: Webhooks
     url: asyncapi/aarons-hpp-webhooks.yml
   - type: DataModel
@@ -301,7 +272,8 @@ apis:
     url: https://hpp.aarons.com/openapi.json
 - aid: aarons:aarons-updatecustomerretrynotification-api
   name: Aaron's Update Customer Retry Notification API
-  description: The UpdateCustomerRetryNotification API from Aaron's — 1 operation(s) for updatecustomerretrynotification.
+  description: >-
+    The UpdateCustomerRetryNotification API from Aaron's — 1 operation(s) for updatecustomerretrynotification.
   humanURL: https://www.aarons.com/apply
   baseURL: https://api.aarons.com/onboarding
   tags:
@@ -309,6 +281,38 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/aarons-updatecustomerretrynotification-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-create-session-api
+  name: Aaron's Create Session API
+  description: The Create Session API from Aaron's — 1 operation(s) for create session.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - Create Session
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-create-session-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/aarons-hpp-webhooks.yml
+  - type: DataModel
+    url: data-model/aarons-data-model.yml
+  - type: Website
+    url: https://hpp.aarons.com/openapi.json
+- aid: aarons:aarons-customer-data-api
+  name: Aaron's CUSTOMER DATA API
+  description: The CUSTOMER DATA API from Aaron's — 1 operation(s) for customer data.
+  humanURL: https://www.aarons.com/apply
+  baseURL: https://api.aarons.com/onboarding
+  tags:
+  - CUSTOMER DATA
+  properties:
+  - type: OpenAPI
+    url: openapi/aarons-customer-data-api-openapi.yml
   - type: Webhooks
     url: asyncapi/aarons-hpp-webhooks.yml
   - type: DataModel
