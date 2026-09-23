@@ -1,0 +1,182 @@
+openapi: 3.2.0
+info:
+  title: HPP Save Token API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: SaveToken
+paths:
+  /SaveToken:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - SaveToken
+      operationId: SaveToken_Get
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveTokenResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Save token get
+      x-summary-source: derived
+    put:
+      tags:
+      - SaveToken
+      operationId: SaveToken_Create
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveTokenResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveToken'
+      summary: Save token create
+      x-summary-source: derived
+    post:
+      tags:
+      - SaveToken
+      operationId: SaveToken_Post
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveTokenResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveToken'
+      summary: Save token post
+      x-summary-source: derived
+    delete:
+      tags:
+      - SaveToken
+      operationId: SaveToken_Delete
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveTokenResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Save token delete
+      x-summary-source: derived
+components:
+  schemas:
+    SaveTokenResponse:
+      title: SaveTokenResponse
+      properties:
+        CreditCardType:
+          type: string
+        Last4:
+          type: string
+        Expiration:
+          type: string
+        Result:
+          type: string
+        FirstName:
+          type: string
+        LastName:
+          type: string
+        DeliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        BINData:
+          type: string
+      description: SaveTokenResponse
+      type: object
+    DeliveryAddress:
+      title: DeliveryAddress
+      properties:
+        Address1:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        ZipCode:
+          type: string
+      description: DeliveryAddress
+      type: object
+    SaveToken:
+      title: SaveToken
+      properties:
+        SessionGuid:
+          type: string
+        TermsVersion:
+          type: string
+      description: SaveToken
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

@@ -1,0 +1,209 @@
+openapi: 3.2.0
+info:
+  title: HPP Save Device Intelligence API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: SaveDeviceIntelligence
+paths:
+  /SaveDeviceIntelligence:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - SaveDeviceIntelligence
+      operationId: SaveDeviceIntelligence_Get
+      parameters:
+      - name: TokenGuid
+        in: query
+        schema:
+          type: string
+      - name: DeviceId
+        in: query
+        schema:
+          type: string
+      - name: NavigatorData
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveDeviceIntelligenceResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Save device intelligence get
+      x-summary-source: derived
+    put:
+      tags:
+      - SaveDeviceIntelligence
+      operationId: SaveDeviceIntelligence_Create
+      parameters:
+      - name: TokenGuid
+        in: query
+        schema:
+          type: string
+      - name: DeviceId
+        in: query
+        schema:
+          type: string
+      - name: NavigatorData
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveDeviceIntelligenceResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveDeviceIntelligence'
+      summary: Save device intelligence create
+      x-summary-source: derived
+    post:
+      tags:
+      - SaveDeviceIntelligence
+      operationId: SaveDeviceIntelligence_Post
+      parameters:
+      - name: TokenGuid
+        in: query
+        schema:
+          type: string
+      - name: DeviceId
+        in: query
+        schema:
+          type: string
+      - name: NavigatorData
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveDeviceIntelligenceResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveDeviceIntelligence'
+      summary: Save device intelligence post
+      x-summary-source: derived
+    delete:
+      tags:
+      - SaveDeviceIntelligence
+      operationId: SaveDeviceIntelligence_Delete
+      parameters:
+      - name: TokenGuid
+        in: query
+        schema:
+          type: string
+      - name: DeviceId
+        in: query
+        schema:
+          type: string
+      - name: NavigatorData
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveDeviceIntelligenceResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Save device intelligence delete
+      x-summary-source: derived
+components:
+  schemas:
+    SaveDeviceIntelligenceResponse:
+      title: SaveDeviceIntelligenceResponse
+      properties:
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: SaveDeviceIntelligenceResponse
+      type: object
+    ResponseStatus:
+      title: ResponseStatus
+      properties:
+        ErrorCode:
+          type: string
+        Message:
+          type: string
+        StackTrace:
+          type: string
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseError'
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseStatus
+      type: object
+    ResponseError:
+      title: ResponseError
+      properties:
+        ErrorCode:
+          type: string
+        FieldName:
+          type: string
+        Message:
+          type: string
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseError
+      type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
+    SaveDeviceIntelligence:
+      title: SaveDeviceIntelligence
+      properties:
+        DeviceId:
+          type: string
+        NavigatorData:
+          type: string
+        TokenGuid:
+          type: string
+      description: SaveDeviceIntelligence
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

@@ -1,0 +1,181 @@
+openapi: 3.2.0
+info:
+  title: HPP Authorize Session API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: AuthorizeSession
+paths:
+  /AuthorizeSession:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - AuthorizeSession
+      operationId: AuthorizeSession_Get
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeSessionResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Authorize session get
+      x-summary-source: derived
+    put:
+      tags:
+      - AuthorizeSession
+      operationId: AuthorizeSession_Create
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeSessionResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeSession'
+      summary: Authorize session create
+      x-summary-source: derived
+    post:
+      tags:
+      - AuthorizeSession
+      operationId: AuthorizeSession_Post
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeSessionResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeSession'
+      summary: Authorize session post
+      x-summary-source: derived
+    delete:
+      tags:
+      - AuthorizeSession
+      operationId: AuthorizeSession_Delete
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeSessionResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Authorize session delete
+      x-summary-source: derived
+components:
+  schemas:
+    AuthorizeSessionResponse:
+      title: AuthorizeSessionResponse
+      properties:
+        ClientToken:
+          type: string
+        PublicKeyBase64:
+          type: string
+        PublicKey:
+          type: string
+        OneTimeUrl:
+          type: string
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: AuthorizeSessionResponse
+      type: object
+    ResponseStatus:
+      title: ResponseStatus
+      properties:
+        ErrorCode:
+          type: string
+        Message:
+          type: string
+        StackTrace:
+          type: string
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseError'
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseStatus
+      type: object
+    ResponseError:
+      title: ResponseError
+      properties:
+        ErrorCode:
+          type: string
+        FieldName:
+          type: string
+        Message:
+          type: string
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseError
+      type: object
+    AuthorizeSession:
+      title: AuthorizeSession
+      properties:
+        SessionGuid:
+          type: string
+      description: AuthorizeSession
+      type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

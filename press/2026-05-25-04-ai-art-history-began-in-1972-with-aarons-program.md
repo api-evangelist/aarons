@@ -1,7 +1,9 @@
 ---
 title: AI art history began in 1972 with Aaron's program
 url: https://www.facebook.com/groups/officialmidjourney/posts/456355219989381/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Aaron''s" press release artificial intelligence'
 position: 4
 source: serpapi-google

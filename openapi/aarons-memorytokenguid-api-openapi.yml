@@ -1,0 +1,177 @@
+openapi: 3.2.0
+info:
+  title: HPP Memory Token Guid API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: MemoryTokenGuid
+paths:
+  /MemoryTokenGuid:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - MemoryTokenGuid
+      operationId: MemoryTokenGuid_Get
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryTokenGuidResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Memory token guid get
+      x-summary-source: derived
+    put:
+      tags:
+      - MemoryTokenGuid
+      operationId: MemoryTokenGuid_Create
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryTokenGuidResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemoryTokenGuid'
+      summary: Memory token guid create
+      x-summary-source: derived
+    post:
+      tags:
+      - MemoryTokenGuid
+      operationId: MemoryTokenGuid_Post
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryTokenGuidResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemoryTokenGuid'
+      summary: Memory token guid post
+      x-summary-source: derived
+    delete:
+      tags:
+      - MemoryTokenGuid
+      operationId: MemoryTokenGuid_Delete
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryTokenGuidResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Memory token guid delete
+      x-summary-source: derived
+components:
+  schemas:
+    ResponseStatus:
+      title: ResponseStatus
+      properties:
+        ErrorCode:
+          type: string
+        Message:
+          type: string
+        StackTrace:
+          type: string
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseError'
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseStatus
+      type: object
+    ResponseError:
+      title: ResponseError
+      properties:
+        ErrorCode:
+          type: string
+        FieldName:
+          type: string
+        Message:
+          type: string
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseError
+      type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
+    MemoryTokenGuidResponse:
+      title: MemoryTokenGuidResponse
+      properties:
+        TokenGuid:
+          type: string
+        Result:
+          type: string
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: MemoryTokenGuidResponse
+      type: object
+    MemoryTokenGuid:
+      title: MemoryTokenGuid
+      properties:
+        SessionGuid:
+          type: string
+      description: MemoryTokenGuid
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

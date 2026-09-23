@@ -1,0 +1,221 @@
+openapi: 3.2.0
+info:
+  title: HPP Repay Card Vault Postback API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: RepayCardVaultPostback
+paths:
+  /RepayCardVaultPostback:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - RepayCardVaultPostback
+      operationId: RepayCardVaultPostback_Get
+      parameters:
+      - name: event_data
+        in: query
+        schema:
+          type: string
+      - name: event_meta_data
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepayPostbackResponse'
+      deprecated: false
+      summary: Repay card vault postback get
+      x-summary-source: derived
+    put:
+      tags:
+      - RepayCardVaultPostback
+      operationId: RepayCardVaultPostback_Create
+      parameters:
+      - name: event_data
+        in: query
+        schema:
+          type: string
+      - name: event_meta_data
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepayPostbackResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepayCardVaultPostback'
+      summary: Repay card vault postback create
+      x-summary-source: derived
+    post:
+      tags:
+      - RepayCardVaultPostback
+      operationId: RepayCardVaultPostback_Post
+      parameters:
+      - name: event_data
+        in: query
+        schema:
+          type: string
+      - name: event_meta_data
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepayPostbackResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepayCardVaultPostback'
+      summary: Repay card vault postback post
+      x-summary-source: derived
+    delete:
+      tags:
+      - RepayCardVaultPostback
+      operationId: RepayCardVaultPostback_Delete
+      parameters:
+      - name: event_data
+        in: query
+        schema:
+          type: string
+      - name: event_meta_data
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepayPostbackResponse'
+      deprecated: false
+      summary: Repay card vault postback delete
+      x-summary-source: derived
+components:
+  schemas:
+    EventMetaData:
+      title: EventMetaData
+      properties:
+        version:
+          type: string
+        event_type:
+          type: string
+      description: EventMetaData
+      type: object
+    CustomFields:
+      title: CustomFields
+      properties:
+        PaymentChannel:
+          type: string
+        MultiPay:
+          type: string
+        SavePaymentMethod:
+          type: string
+        Brand:
+          type: string
+        StoreNumber:
+          type: string
+        ConvenienceFee:
+          type: string
+        CustomerSave:
+          type: string
+        SaveMyCard:
+          type: string
+        CustomerStreet:
+          type: string
+        CustomerCity:
+          type: string
+        CustomerState:
+          type: string
+        CustomerZip:
+          type: string
+      description: CustomFields
+      type: object
+    RepayCardVaultPostback:
+      title: RepayCardVaultPostback
+      properties:
+        event_data:
+          $ref: '#/components/schemas/CardVaultEventData'
+        event_meta_data:
+          $ref: '#/components/schemas/EventMetaData'
+      description: RepayCardVaultPostback
+      type: object
+    CardVaultEventData:
+      title: CardVaultEventData
+      properties:
+        gateway_mid:
+          type: string
+        custom_fields:
+          $ref: '#/components/schemas/CustomFields'
+        customer_id:
+          type: string
+        customer_key:
+          type: string
+        nickname:
+          type: string
+        stored_payment_id:
+          type: string
+        card_bin:
+          type: string
+        card_brand:
+          type: string
+        card_expiration:
+          type: string
+        card_last_four:
+          type: string
+        card_type:
+          type: string
+        customer_name:
+          type: string
+        is_eligible_for_disbursement:
+          type: boolean
+        stored_payment_type:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+      description: CardVaultEventData
+      type: object
+    RepayPostbackResponse:
+      title: RepayPostbackResponse
+      properties:
+        Result:
+          type: string
+      description: RepayPostbackResponse
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

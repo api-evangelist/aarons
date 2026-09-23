@@ -1,7 +1,9 @@
 ---
 title: IQVentures Completes Acquisition of The Aaron's Company
 url: https://www.prnewswire.com/news-releases/iqventures-completes-acquisition-of-the-aarons-company-302267226.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Aaron''s" press release artificial intelligence'
 position: 1
 source: serpapi-google

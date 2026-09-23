@@ -1,0 +1,165 @@
+openapi: 3.2.0
+info:
+  title: HPP Update Customer Retry Notification API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: UpdateCustomerRetryNotification
+paths:
+  /UpdateCustomerRetryNotification:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - UpdateCustomerRetryNotification
+      operationId: UpdateCustomerRetryNotification_Get
+      parameters:
+      - name: PaymentGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCustomerRetryNotificationResponse'
+      deprecated: false
+      summary: Update customer retry notification get
+      x-summary-source: derived
+    put:
+      tags:
+      - UpdateCustomerRetryNotification
+      operationId: UpdateCustomerRetryNotification_Create
+      parameters:
+      - name: PaymentGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCustomerRetryNotificationResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomerRetryNotification'
+      summary: Update customer retry notification create
+      x-summary-source: derived
+    post:
+      tags:
+      - UpdateCustomerRetryNotification
+      operationId: UpdateCustomerRetryNotification_Post
+      parameters:
+      - name: PaymentGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCustomerRetryNotificationResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomerRetryNotification'
+      summary: Update customer retry notification post
+      x-summary-source: derived
+    delete:
+      tags:
+      - UpdateCustomerRetryNotification
+      operationId: UpdateCustomerRetryNotification_Delete
+      parameters:
+      - name: PaymentGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCustomerRetryNotificationResponse'
+      deprecated: false
+      summary: Update customer retry notification delete
+      x-summary-source: derived
+components:
+  schemas:
+    UpdateCustomerRetryNotification:
+      title: UpdateCustomerRetryNotification
+      properties:
+        PaymentGuid:
+          type: string
+      description: UpdateCustomerRetryNotification
+      type: object
+    UpdateCustomerRetryNotificationResponse:
+      title: UpdateCustomerRetryNotificationResponse
+      properties:
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: UpdateCustomerRetryNotificationResponse
+      type: object
+    ResponseStatus:
+      title: ResponseStatus
+      properties:
+        ErrorCode:
+          type: string
+        Message:
+          type: string
+        StackTrace:
+          type: string
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseError'
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseStatus
+      type: object
+    ResponseError:
+      title: ResponseError
+      properties:
+        ErrorCode:
+          type: string
+        FieldName:
+          type: string
+        Message:
+          type: string
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseError
+      type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

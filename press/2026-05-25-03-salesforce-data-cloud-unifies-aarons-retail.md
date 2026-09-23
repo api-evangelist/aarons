@@ -1,7 +1,9 @@
 ---
 title: Salesforce Data Cloud Unifies Aaron's Retail ...
 url: https://www.salesforce.com/news/stories/aarons-customer-story/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Aaron''s" press release artificial intelligence'
 position: 3
 source: serpapi-google

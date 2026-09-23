@@ -1,0 +1,222 @@
+openapi: 3.2.0
+info:
+  title: HPP Ping API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: Ping
+paths:
+  /ping:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - Ping
+      operationId: Ping_Get
+      parameters:
+      - name: Name
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+      deprecated: false
+      summary: Ping get
+      x-summary-source: derived
+    put:
+      tags:
+      - Ping
+      operationId: Ping_Create
+      parameters:
+      - name: Name
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ping'
+      summary: Ping create
+      x-summary-source: derived
+    post:
+      tags:
+      - Ping
+      operationId: Ping_Post
+      parameters:
+      - name: Name
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ping'
+      summary: Ping post
+      x-summary-source: derived
+    delete:
+      tags:
+      - Ping
+      operationId: Ping_Delete
+      parameters:
+      - name: Name
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+      deprecated: false
+      summary: Ping delete
+      x-summary-source: derived
+  /ping/{Name}:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - Ping
+      operationId: PingName_Get
+      parameters:
+      - name: Name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+      deprecated: false
+      summary: Ping name get
+      x-summary-source: derived
+    put:
+      tags:
+      - Ping
+      operationId: PingName_Create
+      parameters:
+      - name: Name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ping'
+      summary: Ping name create
+      x-summary-source: derived
+    post:
+      tags:
+      - Ping
+      operationId: PingName_Post
+      parameters:
+      - name: Name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ping'
+      summary: Ping name post
+      x-summary-source: derived
+    delete:
+      tags:
+      - Ping
+      operationId: PingName_Delete
+      parameters:
+      - name: Name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+      deprecated: false
+      summary: Ping name delete
+      x-summary-source: derived
+components:
+  schemas:
+    Ping:
+      title: Ping
+      properties:
+        Name:
+          type: string
+      description: Ping
+      type: object
+    PingResponse:
+      title: PingResponse
+      properties:
+        Result:
+          type: string
+      description: PingResponse
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

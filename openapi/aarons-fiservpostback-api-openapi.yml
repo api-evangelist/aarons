@@ -1,0 +1,293 @@
+openapi: 3.2.0
+info:
+  title: HPP Fiserv Postback API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: FiservPostback
+paths:
+  /FiservPostback:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - FiservPostback
+      operationId: FiservPostback_Get
+      parameters:
+      - name: AuthCode
+        in: query
+        schema:
+          type: string
+      - name: Card
+        in: query
+        schema:
+          type: string
+      - name: GatewayRefId
+        in: query
+        schema:
+          type: string
+      - name: Error
+        in: query
+        schema:
+          type: boolean
+      - name: Reason
+        in: query
+        schema:
+          type: string
+      - name: GatewayReason
+        in: query
+        schema:
+          type: string
+      - name: ZeroDollarAuth
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FiservPostbackResponse'
+      deprecated: false
+      summary: Fiserv postback get
+      x-summary-source: derived
+    put:
+      tags:
+      - FiservPostback
+      operationId: FiservPostback_Create
+      parameters:
+      - name: AuthCode
+        in: query
+        schema:
+          type: string
+      - name: Card
+        in: query
+        schema:
+          type: string
+      - name: GatewayRefId
+        in: query
+        schema:
+          type: string
+      - name: Error
+        in: query
+        schema:
+          type: boolean
+      - name: Reason
+        in: query
+        schema:
+          type: string
+      - name: GatewayReason
+        in: query
+        schema:
+          type: string
+      - name: ZeroDollarAuth
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FiservPostbackResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FiservPostback'
+      summary: Fiserv postback create
+      x-summary-source: derived
+    post:
+      tags:
+      - FiservPostback
+      operationId: FiservPostback_Post
+      parameters:
+      - name: AuthCode
+        in: query
+        schema:
+          type: string
+      - name: Card
+        in: query
+        schema:
+          type: string
+      - name: GatewayRefId
+        in: query
+        schema:
+          type: string
+      - name: Error
+        in: query
+        schema:
+          type: boolean
+      - name: Reason
+        in: query
+        schema:
+          type: string
+      - name: GatewayReason
+        in: query
+        schema:
+          type: string
+      - name: ZeroDollarAuth
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FiservPostbackResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FiservPostback'
+      summary: Fiserv postback post
+      x-summary-source: derived
+    delete:
+      tags:
+      - FiservPostback
+      operationId: FiservPostback_Delete
+      parameters:
+      - name: AuthCode
+        in: query
+        schema:
+          type: string
+      - name: Card
+        in: query
+        schema:
+          type: string
+      - name: GatewayRefId
+        in: query
+        schema:
+          type: string
+      - name: Error
+        in: query
+        schema:
+          type: boolean
+      - name: Reason
+        in: query
+        schema:
+          type: string
+      - name: GatewayReason
+        in: query
+        schema:
+          type: string
+      - name: ZeroDollarAuth
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FiservPostbackResponse'
+      deprecated: false
+      summary: Fiserv postback delete
+      x-summary-source: derived
+components:
+  schemas:
+    Expiration:
+      title: Expiration
+      properties:
+        Month:
+          type: string
+        Year:
+          type: string
+      description: Expiration
+      type: object
+    ZeroDollarAuth:
+      title: ZeroDollarAuth
+      properties:
+        CVV2:
+          type: string
+        AVS:
+          $ref: '#/components/schemas/AVS'
+      description: ZeroDollarAuth
+      type: object
+    AVS:
+      title: AVS
+      properties:
+        StreetMatch:
+          type: string
+        PostalCodeMatch:
+          type: string
+        AssociationAvsResponse:
+          type: string
+      description: AVS
+      type: object
+    FiservPostback:
+      title: FiservPostback
+      properties:
+        AuthCode:
+          type: string
+        Card:
+          $ref: '#/components/schemas/Card'
+        Error:
+          type: boolean
+        GatewayReason:
+          type: string
+        GatewayRefId:
+          type: string
+        Reason:
+          type: string
+        ZeroDollarAuth:
+          $ref: '#/components/schemas/ZeroDollarAuth'
+      description: FiservPostback
+      type: object
+    FiservPostbackResponse:
+      title: FiservPostbackResponse
+      properties:
+        Result:
+          type: string
+      description: FiservPostbackResponse
+      type: object
+    Card:
+      title: Card
+      properties:
+        BIN:
+          type: string
+        Brand:
+          type: string
+        Last4:
+          type: string
+        Name:
+          type: string
+        Token:
+          type: string
+        Masked:
+          type: string
+        Exp:
+          $ref: '#/components/schemas/Expiration'
+        Address1:
+          type: string
+        City:
+          type: string
+        Region:
+          type: string
+        PostalCode:
+          type: string
+      description: Card
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

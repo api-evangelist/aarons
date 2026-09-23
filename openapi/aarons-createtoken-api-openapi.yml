@@ -1,0 +1,308 @@
+openapi: 3.2.0
+info:
+  title: HPP Create Token API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: CreateToken
+paths:
+  /CreateToken:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - CreateToken
+      operationId: CreateToken_Get
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      - name: Name
+        in: query
+        schema:
+          type: string
+      - name: Address1
+        in: query
+        schema:
+          type: string
+      - name: City
+        in: query
+        schema:
+          type: string
+      - name: State
+        in: query
+        schema:
+          type: string
+      - name: PostalCode
+        in: query
+        schema:
+          type: string
+      - name: SaveOnFile
+        in: query
+        schema:
+          type: boolean
+      - name: AuthToken
+        in: query
+        schema:
+          type: string
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTokenResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Create token get
+      x-summary-source: derived
+    put:
+      tags:
+      - CreateToken
+      operationId: CreateToken_Create
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      - name: Name
+        in: query
+        schema:
+          type: string
+      - name: Address1
+        in: query
+        schema:
+          type: string
+      - name: City
+        in: query
+        schema:
+          type: string
+      - name: State
+        in: query
+        schema:
+          type: string
+      - name: PostalCode
+        in: query
+        schema:
+          type: string
+      - name: SaveOnFile
+        in: query
+        schema:
+          type: boolean
+      - name: AuthToken
+        in: query
+        schema:
+          type: string
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTokenResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateToken'
+      summary: Create token create
+      x-summary-source: derived
+    post:
+      tags:
+      - CreateToken
+      operationId: CreateToken_Post
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      - name: Name
+        in: query
+        schema:
+          type: string
+      - name: Address1
+        in: query
+        schema:
+          type: string
+      - name: City
+        in: query
+        schema:
+          type: string
+      - name: State
+        in: query
+        schema:
+          type: string
+      - name: PostalCode
+        in: query
+        schema:
+          type: string
+      - name: SaveOnFile
+        in: query
+        schema:
+          type: boolean
+      - name: AuthToken
+        in: query
+        schema:
+          type: string
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTokenResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateToken'
+      summary: Create token post
+      x-summary-source: derived
+    delete:
+      tags:
+      - CreateToken
+      operationId: CreateToken_Delete
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      - name: Name
+        in: query
+        schema:
+          type: string
+      - name: Address1
+        in: query
+        schema:
+          type: string
+      - name: City
+        in: query
+        schema:
+          type: string
+      - name: State
+        in: query
+        schema:
+          type: string
+      - name: PostalCode
+        in: query
+        schema:
+          type: string
+      - name: SaveOnFile
+        in: query
+        schema:
+          type: boolean
+      - name: AuthToken
+        in: query
+        schema:
+          type: string
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTokenResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Create token delete
+      x-summary-source: derived
+components:
+  schemas:
+    DeliveryAddress:
+      title: DeliveryAddress
+      properties:
+        Address1:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        ZipCode:
+          type: string
+      description: DeliveryAddress
+      type: object
+    CreateToken:
+      title: CreateToken
+      properties:
+        Address1:
+          type: string
+        AuthToken:
+          type: string
+        City:
+          type: string
+        Name:
+          type: string
+        PostalCode:
+          type: string
+        SaveOnFile:
+          type: boolean
+        SessionGuid:
+          type: string
+        State:
+          type: string
+        TermsVersion:
+          type: string
+      description: CreateToken
+      type: object
+    CreateTokenResponse:
+      title: CreateTokenResponse
+      properties:
+        CreditCardType:
+          type: string
+        Last4:
+          type: string
+        Expiration:
+          type: string
+        Result:
+          type: string
+        FirstName:
+          type: string
+        LastName:
+          type: string
+        DeliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        BINData:
+          type: string
+      description: CreateTokenResponse
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

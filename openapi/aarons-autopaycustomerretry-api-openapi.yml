@@ -1,0 +1,208 @@
+openapi: 3.2.0
+info:
+  title: HPP Auto Pay Customer Retry API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: AutoPayCustomerRetry
+paths:
+  /AutoPayCustomerRetry:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - AutoPayCustomerRetry
+      operationId: AutoPayCustomerRetry_Get
+      parameters:
+      - name: PaymentGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoPayCustomerRetryResponse'
+      deprecated: false
+      summary: Auto pay customer retry get
+      x-summary-source: derived
+    put:
+      tags:
+      - AutoPayCustomerRetry
+      operationId: AutoPayCustomerRetry_Create
+      parameters:
+      - name: PaymentGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoPayCustomerRetryResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutoPayCustomerRetry'
+      summary: Auto pay customer retry create
+      x-summary-source: derived
+    post:
+      tags:
+      - AutoPayCustomerRetry
+      operationId: AutoPayCustomerRetry_Post
+      parameters:
+      - name: PaymentGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoPayCustomerRetryResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutoPayCustomerRetry'
+      summary: Auto pay customer retry post
+      x-summary-source: derived
+    delete:
+      tags:
+      - AutoPayCustomerRetry
+      operationId: AutoPayCustomerRetry_Delete
+      parameters:
+      - name: PaymentGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoPayCustomerRetryResponse'
+      deprecated: false
+      summary: Auto pay customer retry delete
+      x-summary-source: derived
+components:
+  schemas:
+    PaymentStatus:
+      title: PaymentStatus
+      properties:
+        Status:
+          type: string
+        CreditCardPaymentStatusId:
+          type: integer
+          format: int32
+        CreditCardProcessorStatusId:
+          type: integer
+          format: int32
+        CreditCardPaymentResponseStatusId:
+          type: integer
+          format: int32
+      description: PaymentStatus
+      type: object
+    PaymentResponse:
+      title: PaymentResponse
+      properties:
+        PaymentGuid:
+          type: string
+        PaymentStatus:
+          $ref: '#/components/schemas/PaymentStatus'
+        IsDuplicate:
+          type: boolean
+        AuthorizationCode:
+          type: string
+        PaymentDateTime:
+          type: string
+          format: date-time
+        ReferenceNumber:
+          type: integer
+          format: int64
+        IsRetryable:
+          type: boolean
+        PaymentResponseMessage:
+          type: string
+        MaskedAccountNumber:
+          type: string
+      description: PaymentResponse
+      type: object
+    ResponseStatus:
+      title: ResponseStatus
+      properties:
+        ErrorCode:
+          type: string
+        Message:
+          type: string
+        StackTrace:
+          type: string
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseError'
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseStatus
+      type: object
+    ResponseError:
+      title: ResponseError
+      properties:
+        ErrorCode:
+          type: string
+        FieldName:
+          type: string
+        Message:
+          type: string
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseError
+      type: object
+    AutoPayCustomerRetry:
+      title: AutoPayCustomerRetry
+      properties:
+        PaymentGuid:
+          type: string
+      description: AutoPayCustomerRetry
+      type: object
+    AutoPayCustomerRetryResponse:
+      title: AutoPayCustomerRetryResponse
+      properties:
+        PaymentResponse:
+          $ref: '#/components/schemas/PaymentResponse'
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: AutoPayCustomerRetryResponse
+      type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

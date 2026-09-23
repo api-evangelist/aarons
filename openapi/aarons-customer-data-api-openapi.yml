@@ -1,0 +1,277 @@
+openapi: 3.2.0
+info:
+  title: HPP Customer Data API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: CUSTOMER DATA
+paths:
+  /CustomerData/2:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - CUSTOMER DATA
+      operationId: CustomerData2_Get
+      parameters:
+      - name: TokenGuid
+        in: query
+        schema:
+          type: string
+      - name: SaveOnFile
+        in: query
+        schema:
+          type: boolean
+      - name: Email
+        in: query
+        schema:
+          type: string
+      - name: ApplicationId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      - name: Language
+        in: query
+        schema:
+          type: string
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDataResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Customer data2 get
+      x-summary-source: derived
+    put:
+      tags:
+      - CUSTOMER DATA
+      operationId: CustomerData2_Create
+      parameters:
+      - name: TokenGuid
+        in: query
+        schema:
+          type: string
+      - name: SaveOnFile
+        in: query
+        schema:
+          type: boolean
+      - name: Email
+        in: query
+        schema:
+          type: string
+      - name: ApplicationId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      - name: Language
+        in: query
+        schema:
+          type: string
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDataResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerData'
+      summary: Customer data2 create
+      x-summary-source: derived
+    post:
+      tags:
+      - CUSTOMER DATA
+      operationId: CustomerData2_Post
+      parameters:
+      - name: TokenGuid
+        in: query
+        schema:
+          type: string
+      - name: SaveOnFile
+        in: query
+        schema:
+          type: boolean
+      - name: Email
+        in: query
+        schema:
+          type: string
+      - name: ApplicationId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      - name: Language
+        in: query
+        schema:
+          type: string
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDataResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerData'
+      summary: Customer data2 post
+      x-summary-source: derived
+    delete:
+      tags:
+      - CUSTOMER DATA
+      operationId: CustomerData2_Delete
+      parameters:
+      - name: TokenGuid
+        in: query
+        schema:
+          type: string
+      - name: SaveOnFile
+        in: query
+        schema:
+          type: boolean
+      - name: Email
+        in: query
+        schema:
+          type: string
+      - name: ApplicationId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: TermsVersion
+        in: query
+        schema:
+          type: string
+      - name: Language
+        in: query
+        schema:
+          type: string
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDataResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Customer data2 delete
+      x-summary-source: derived
+components:
+  schemas:
+    CustomerDataResponse:
+      title: CustomerDataResponse
+      properties:
+        CreditCardType:
+          type: string
+        Last4:
+          type: string
+        Expiration:
+          type: string
+        Result:
+          type: string
+        FirstName:
+          type: string
+        LastName:
+          type: string
+        DeliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        BINData:
+          type: string
+      description: CustomerDataResponse
+      type: object
+    DeliveryAddress:
+      title: DeliveryAddress
+      properties:
+        Address1:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        ZipCode:
+          type: string
+      description: DeliveryAddress
+      type: object
+    CustomerData:
+      title: CustomerData
+      properties:
+        ApplicationId:
+          type: integer
+          format: int32
+        Email:
+          type: string
+        Language:
+          type: string
+        SaveOnFile:
+          type: boolean
+        SessionGuid:
+          type: string
+        TermsVersion:
+          type: string
+        TokenGuid:
+          type: string
+      description: CustomerData
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

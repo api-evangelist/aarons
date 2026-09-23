@@ -1,0 +1,169 @@
+openapi: 3.2.0
+info:
+  title: HPP Memory Bearer Token API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: MemoryBearerToken
+paths:
+  /MemoryBearerToken:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - MemoryBearerToken
+      operationId: MemoryBearerToken_Get
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryBearerTokenResponse'
+      deprecated: false
+      summary: Memory bearer token get
+      x-summary-source: derived
+    put:
+      tags:
+      - MemoryBearerToken
+      operationId: MemoryBearerToken_Create
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryBearerTokenResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemoryBearerToken'
+      summary: Memory bearer token create
+      x-summary-source: derived
+    post:
+      tags:
+      - MemoryBearerToken
+      operationId: MemoryBearerToken_Post
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryBearerTokenResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemoryBearerToken'
+      summary: Memory bearer token post
+      x-summary-source: derived
+    delete:
+      tags:
+      - MemoryBearerToken
+      operationId: MemoryBearerToken_Delete
+      parameters:
+      - name: SessionGuid
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryBearerTokenResponse'
+      deprecated: false
+      summary: Memory bearer token delete
+      x-summary-source: derived
+components:
+  schemas:
+    MemoryBearerToken:
+      title: MemoryBearerToken
+      properties:
+        SessionGuid:
+          type: string
+      description: MemoryBearerToken
+      type: object
+    MemoryBearerTokenResponse:
+      title: MemoryBearerTokenResponse
+      properties:
+        BearerToken:
+          type: string
+        Result:
+          type: string
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: MemoryBearerTokenResponse
+      type: object
+    ResponseStatus:
+      title: ResponseStatus
+      properties:
+        ErrorCode:
+          type: string
+        Message:
+          type: string
+        StackTrace:
+          type: string
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseError'
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseStatus
+      type: object
+    ResponseError:
+      title: ResponseError
+      properties:
+        ErrorCode:
+          type: string
+        FieldName:
+          type: string
+        Message:
+          type: string
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseError
+      type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

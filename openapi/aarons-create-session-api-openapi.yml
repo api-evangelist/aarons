@@ -1,0 +1,174 @@
+openapi: 3.2.0
+info:
+  title: HPP Create Session API
+  version: '1.0'
+servers:
+- url: https://hpp.aarons.com/
+tags:
+- name: Create Session
+paths:
+  /CreateSession/2:
+    parameters:
+    - $ref: '#/components/parameters/Accept'
+    get:
+      tags:
+      - Create Session
+      operationId: CreateSession2_Get
+      parameters:
+      - name: SessionItem
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSessionResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Create session2 get
+      x-summary-source: derived
+    put:
+      tags:
+      - Create Session
+      operationId: CreateSession2_Create
+      parameters:
+      - name: SessionItem
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSessionResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSession'
+      summary: Create session2 create
+      x-summary-source: derived
+    post:
+      tags:
+      - Create Session
+      operationId: CreateSession2_Post
+      parameters:
+      - name: SessionItem
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSessionResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSession'
+      summary: Create session2 post
+      x-summary-source: derived
+    delete:
+      tags:
+      - Create Session
+      operationId: CreateSession2_Delete
+      parameters:
+      - name: SessionItem
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSessionResponse'
+      deprecated: false
+      security:
+      - Bearer: []
+      summary: Create session2 delete
+      x-summary-source: derived
+components:
+  schemas:
+    CreateSessionResponse:
+      title: CreateSessionResponse
+      properties:
+        SessionGuid:
+          type: string
+        Version:
+          type: integer
+          format: int32
+        ExpiresAt:
+          type: string
+          format: date-time
+      description: CreateSessionResponse
+      type: object
+    SessionItem:
+      title: SessionItem
+      properties:
+        ApplicationId:
+          type: integer
+          format: int32
+        BearerToken:
+          type: string
+        ButtonText:
+          type: string
+        DisplaySaveOnFile:
+          type: boolean
+        EmailAddress:
+          type: string
+        ExpiresAt:
+          type: string
+          format: date-time
+        GCID:
+          type: string
+        Lang:
+          type: string
+        LangBuster:
+          type: boolean
+        SaveOnFile:
+          type: boolean
+        Store:
+          type: string
+        TokenGuid:
+          type: string
+      description: SessionItem
+      type: object
+    CreateSession:
+      title: CreateSession
+      properties:
+        SessionItem:
+          $ref: '#/components/schemas/SessionItem'
+      description: CreateSession
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
