@@ -98,13 +98,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    MemoryBearerToken:
-      title: MemoryBearerToken
-      properties:
-        SessionGuid:
-          type: string
-      description: MemoryBearerToken
-      type: object
     MemoryBearerTokenResponse:
       title: MemoryBearerTokenResponse
       properties:
@@ -115,6 +108,19 @@ components:
         ResponseStatus:
           $ref: '#/components/schemas/ResponseStatus'
       description: MemoryBearerTokenResponse
+      type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
+    MemoryBearerToken:
+      title: MemoryBearerToken
+      properties:
+        SessionGuid:
+          type: string
+      description: MemoryBearerToken
       type: object
     ResponseStatus:
       title: ResponseStatus
@@ -145,12 +151,6 @@ components:
         Meta:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
-      type: object
-    Dictionary_String_String_:
-      title: Dictionary<String,String>
-      additionalProperties:
-        type: string
-      description: Dictionary<String,String>
       type: object
   parameters:
     Accept:

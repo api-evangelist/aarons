@@ -234,19 +234,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DeliveryAddress:
-      title: DeliveryAddress
-      properties:
-        Address1:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        ZipCode:
-          type: string
-      description: DeliveryAddress
-      type: object
     CreateToken:
       title: CreateToken
       properties:
@@ -269,6 +256,19 @@ components:
         TermsVersion:
           type: string
       description: CreateToken
+      type: object
+    DeliveryAddress:
+      title: DeliveryAddress
+      properties:
+        Address1:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        ZipCode:
+          type: string
+      description: DeliveryAddress
       type: object
     CreateTokenResponse:
       title: CreateTokenResponse

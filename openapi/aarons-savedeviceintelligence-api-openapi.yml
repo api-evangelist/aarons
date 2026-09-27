@@ -145,6 +145,23 @@ components:
           $ref: '#/components/schemas/ResponseStatus'
       description: SaveDeviceIntelligenceResponse
       type: object
+    SaveDeviceIntelligence:
+      title: SaveDeviceIntelligence
+      properties:
+        DeviceId:
+          type: string
+        NavigatorData:
+          type: string
+        TokenGuid:
+          type: string
+      description: SaveDeviceIntelligence
+      type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
     ResponseStatus:
       title: ResponseStatus
       properties:
@@ -174,23 +191,6 @@ components:
         Meta:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
-      type: object
-    Dictionary_String_String_:
-      title: Dictionary<String,String>
-      additionalProperties:
-        type: string
-      description: Dictionary<String,String>
-      type: object
-    SaveDeviceIntelligence:
-      title: SaveDeviceIntelligence
-      properties:
-        DeviceId:
-          type: string
-        NavigatorData:
-          type: string
-        TokenGuid:
-          type: string
-      description: SaveDeviceIntelligence
       type: object
   parameters:
     Accept:

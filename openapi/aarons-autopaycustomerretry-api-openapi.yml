@@ -114,6 +114,29 @@ components:
           format: int32
       description: PaymentStatus
       type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
+    ResponseStatus:
+      title: ResponseStatus
+      properties:
+        ErrorCode:
+          type: string
+        Message:
+          type: string
+        StackTrace:
+          type: string
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseError'
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseStatus
+      type: object
     PaymentResponse:
       title: PaymentResponse
       properties:
@@ -139,22 +162,14 @@ components:
           type: string
       description: PaymentResponse
       type: object
-    ResponseStatus:
-      title: ResponseStatus
+    AutoPayCustomerRetryResponse:
+      title: AutoPayCustomerRetryResponse
       properties:
-        ErrorCode:
-          type: string
-        Message:
-          type: string
-        StackTrace:
-          type: string
-        Errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResponseError'
-        Meta:
-          $ref: '#/components/schemas/Dictionary_String_String_'
-      description: ResponseStatus
+        PaymentResponse:
+          $ref: '#/components/schemas/PaymentResponse'
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: AutoPayCustomerRetryResponse
       type: object
     ResponseError:
       title: ResponseError
@@ -175,21 +190,6 @@ components:
         PaymentGuid:
           type: string
       description: AutoPayCustomerRetry
-      type: object
-    AutoPayCustomerRetryResponse:
-      title: AutoPayCustomerRetryResponse
-      properties:
-        PaymentResponse:
-          $ref: '#/components/schemas/PaymentResponse'
-        ResponseStatus:
-          $ref: '#/components/schemas/ResponseStatus'
-      description: AutoPayCustomerRetryResponse
-      type: object
-    Dictionary_String_String_:
-      title: Dictionary<String,String>
-      additionalProperties:
-        type: string
-      description: Dictionary<String,String>
       type: object
   parameters:
     Accept:

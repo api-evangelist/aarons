@@ -106,19 +106,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CreateSessionResponse:
-      title: CreateSessionResponse
-      properties:
-        SessionGuid:
-          type: string
-        Version:
-          type: integer
-          format: int32
-        ExpiresAt:
-          type: string
-          format: date-time
-      description: CreateSessionResponse
-      type: object
     SessionItem:
       title: SessionItem
       properties:
@@ -156,6 +143,19 @@ components:
         SessionItem:
           $ref: '#/components/schemas/SessionItem'
       description: CreateSession
+      type: object
+    CreateSessionResponse:
+      title: CreateSessionResponse
+      properties:
+        SessionGuid:
+          type: string
+        Version:
+          type: integer
+          format: int32
+        ExpiresAt:
+          type: string
+          format: date-time
+      description: CreateSessionResponse
       type: object
   parameters:
     Accept:

@@ -19,23 +19,26 @@
     "aarons-updatecustomerretrynotification-api-openapi.yml",
     "aarons-ping-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
     "2 archived document(s) dropped as subsets of other archived documents",
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "aarons-hpp-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "superseded outputs removed: aarons-create-session-api-openapi.yml, aarons-customer-data-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 17 total)"
   ],
   "skipped": [
     "_original/aarons-hpp-openapi_3.json: archived document superseded by a larger archived document",
     "_original/aarons-hpp-openapi_2.json: archived document superseded by a larger archived document",
     "aarons-authorizesession-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "aarons-autopaycustomerretry-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "aarons-createsession-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aarons-create-session-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "aarons-createtoken-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "aarons-customerdata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aarons-customer-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "aarons-fiservpostback-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "aarons-memorybearertoken-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "aarons-memorytokenguid-api-openapi.yml: previously refined output, superseded by openapi/_original/",

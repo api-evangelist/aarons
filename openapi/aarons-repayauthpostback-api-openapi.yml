@@ -114,15 +114,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    EventMetaData:
-      title: EventMetaData
-      properties:
-        version:
-          type: string
-        event_type:
-          type: string
-      description: EventMetaData
-      type: object
     Result:
       title: Result
       properties:
@@ -158,30 +149,50 @@ components:
           type: string
       description: Result
       type: object
-    AvsResult:
-      title: AvsResult
+    RepayAuthPostback:
+      title: RepayAuthPostback
       properties:
-        avs_response:
-          type: string
-        avs_response_msg:
-          type: string
-        zip_match:
-          type: string
-        street_match:
-          type: string
-      description: AvsResult
+        event_data:
+          $ref: '#/components/schemas/RepayAuthEventData'
+        event_meta_data:
+          $ref: '#/components/schemas/EventMetaData'
+      description: RepayAuthPostback
       type: object
-    RepayAuthEventData:
-      title: RepayAuthEventData
+    RepayPostbackResponse:
+      title: RepayPostbackResponse
       properties:
-        request:
-          $ref: '#/components/schemas/Request'
-        result:
-          $ref: '#/components/schemas/Result'
-        timestamp:
+        Result:
           type: string
-          format: date-time
-      description: RepayAuthEventData
+      description: RepayPostbackResponse
+      type: object
+    CustomFields:
+      title: CustomFields
+      properties:
+        PaymentChannel:
+          type: string
+        MultiPay:
+          type: string
+        SavePaymentMethod:
+          type: string
+        Brand:
+          type: string
+        StoreNumber:
+          type: string
+        ConvenienceFee:
+          type: string
+        CustomerSave:
+          type: string
+        SaveMyCard:
+          type: string
+        CustomerStreet:
+          type: string
+        CustomerCity:
+          type: string
+        CustomerState:
+          type: string
+        CustomerZip:
+          type: string
+      description: CustomFields
       type: object
     Request:
       title: Request
@@ -218,50 +229,39 @@ components:
           type: string
       description: Request
       type: object
-    CustomFields:
-      title: CustomFields
+    RepayAuthEventData:
+      title: RepayAuthEventData
       properties:
-        PaymentChannel:
+        request:
+          $ref: '#/components/schemas/Request'
+        result:
+          $ref: '#/components/schemas/Result'
+        timestamp:
           type: string
-        MultiPay:
-          type: string
-        SavePaymentMethod:
-          type: string
-        Brand:
-          type: string
-        StoreNumber:
-          type: string
-        ConvenienceFee:
-          type: string
-        CustomerSave:
-          type: string
-        SaveMyCard:
-          type: string
-        CustomerStreet:
-          type: string
-        CustomerCity:
-          type: string
-        CustomerState:
-          type: string
-        CustomerZip:
-          type: string
-      description: CustomFields
+          format: date-time
+      description: RepayAuthEventData
       type: object
-    RepayAuthPostback:
-      title: RepayAuthPostback
+    AvsResult:
+      title: AvsResult
       properties:
-        event_data:
-          $ref: '#/components/schemas/RepayAuthEventData'
-        event_meta_data:
-          $ref: '#/components/schemas/EventMetaData'
-      description: RepayAuthPostback
-      type: object
-    RepayPostbackResponse:
-      title: RepayPostbackResponse
-      properties:
-        Result:
+        avs_response:
           type: string
-      description: RepayPostbackResponse
+        avs_response_msg:
+          type: string
+        zip_match:
+          type: string
+        street_match:
+          type: string
+      description: AvsResult
+      type: object
+    EventMetaData:
+      title: EventMetaData
+      properties:
+        version:
+          type: string
+        event_type:
+          type: string
+      description: EventMetaData
       type: object
   parameters:
     Accept:

@@ -194,54 +194,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Expiration:
-      title: Expiration
-      properties:
-        Month:
-          type: string
-        Year:
-          type: string
-      description: Expiration
-      type: object
-    ZeroDollarAuth:
-      title: ZeroDollarAuth
-      properties:
-        CVV2:
-          type: string
-        AVS:
-          $ref: '#/components/schemas/AVS'
-      description: ZeroDollarAuth
-      type: object
-    AVS:
-      title: AVS
-      properties:
-        StreetMatch:
-          type: string
-        PostalCodeMatch:
-          type: string
-        AssociationAvsResponse:
-          type: string
-      description: AVS
-      type: object
-    FiservPostback:
-      title: FiservPostback
-      properties:
-        AuthCode:
-          type: string
-        Card:
-          $ref: '#/components/schemas/Card'
-        Error:
-          type: boolean
-        GatewayReason:
-          type: string
-        GatewayRefId:
-          type: string
-        Reason:
-          type: string
-        ZeroDollarAuth:
-          $ref: '#/components/schemas/ZeroDollarAuth'
-      description: FiservPostback
-      type: object
     FiservPostbackResponse:
       title: FiservPostbackResponse
       properties:
@@ -275,6 +227,54 @@ components:
         PostalCode:
           type: string
       description: Card
+      type: object
+    AVS:
+      title: AVS
+      properties:
+        StreetMatch:
+          type: string
+        PostalCodeMatch:
+          type: string
+        AssociationAvsResponse:
+          type: string
+      description: AVS
+      type: object
+    FiservPostback:
+      title: FiservPostback
+      properties:
+        AuthCode:
+          type: string
+        Card:
+          $ref: '#/components/schemas/Card'
+        Error:
+          type: boolean
+        GatewayReason:
+          type: string
+        GatewayRefId:
+          type: string
+        Reason:
+          type: string
+        ZeroDollarAuth:
+          $ref: '#/components/schemas/ZeroDollarAuth'
+      description: FiservPostback
+      type: object
+    Expiration:
+      title: Expiration
+      properties:
+        Month:
+          type: string
+        Year:
+          type: string
+      description: Expiration
+      type: object
+    ZeroDollarAuth:
+      title: ZeroDollarAuth
+      properties:
+        CVV2:
+          type: string
+        AVS:
+          $ref: '#/components/schemas/AVS'
+      description: ZeroDollarAuth
       type: object
   parameters:
     Accept:
