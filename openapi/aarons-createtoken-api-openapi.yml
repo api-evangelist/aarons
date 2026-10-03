@@ -257,19 +257,6 @@ components:
           type: string
       description: CreateToken
       type: object
-    DeliveryAddress:
-      title: DeliveryAddress
-      properties:
-        Address1:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        ZipCode:
-          type: string
-      description: DeliveryAddress
-      type: object
     CreateTokenResponse:
       title: CreateTokenResponse
       properties:
@@ -290,6 +277,19 @@ components:
         BINData:
           type: string
       description: CreateTokenResponse
+      type: object
+    DeliveryAddress:
+      title: DeliveryAddress
+      properties:
+        Address1:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        ZipCode:
+          type: string
+      description: DeliveryAddress
       type: object
   parameters:
     Accept:

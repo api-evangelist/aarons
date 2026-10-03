@@ -206,39 +206,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CustomerData:
-      title: CustomerData
-      properties:
-        ApplicationId:
-          type: integer
-          format: int32
-        Email:
-          type: string
-        Language:
-          type: string
-        SaveOnFile:
-          type: boolean
-        SessionGuid:
-          type: string
-        TermsVersion:
-          type: string
-        TokenGuid:
-          type: string
-      description: CustomerData
-      type: object
-    DeliveryAddress:
-      title: DeliveryAddress
-      properties:
-        Address1:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        ZipCode:
-          type: string
-      description: DeliveryAddress
-      type: object
     CustomerDataResponse:
       title: CustomerDataResponse
       properties:
@@ -259,6 +226,39 @@ components:
         BINData:
           type: string
       description: CustomerDataResponse
+      type: object
+    DeliveryAddress:
+      title: DeliveryAddress
+      properties:
+        Address1:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        ZipCode:
+          type: string
+      description: DeliveryAddress
+      type: object
+    CustomerData:
+      title: CustomerData
+      properties:
+        ApplicationId:
+          type: integer
+          format: int32
+        Email:
+          type: string
+        Language:
+          type: string
+        SaveOnFile:
+          type: boolean
+        SessionGuid:
+          type: string
+        TermsVersion:
+          type: string
+        TokenGuid:
+          type: string
+      description: CustomerData
       type: object
   parameters:
     Accept:

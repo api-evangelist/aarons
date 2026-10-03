@@ -113,58 +113,17 @@ paths:
       summary: Repay auth postback delete
       x-summary-source: derived
 components:
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   schemas:
-    Result:
-      title: Result
-      properties:
-        host_code:
-          type: string
-        host_url:
-          type: string
-        last_batch_number:
-          type: string
-        message:
-          type: string
-        message1:
-          type: string
-        message2:
-          type: string
-        original_transaction_id:
-          type: string
-        pn_ref:
-          type: string
-        resp_msg:
-          type: string
-        result_code:
-          type: string
-        auth_code:
-          type: string
-        avs_result:
-          $ref: '#/components/schemas/AvsResult'
-        card_token:
-          type: string
-        commercial_card:
-          type: string
-        cv_result:
-          type: string
-      description: Result
-      type: object
-    RepayAuthPostback:
-      title: RepayAuthPostback
-      properties:
-        event_data:
-          $ref: '#/components/schemas/RepayAuthEventData'
-        event_meta_data:
-          $ref: '#/components/schemas/EventMetaData'
-      description: RepayAuthPostback
-      type: object
-    RepayPostbackResponse:
-      title: RepayPostbackResponse
-      properties:
-        Result:
-          type: string
-      description: RepayPostbackResponse
-      type: object
     CustomFields:
       title: CustomFields
       properties:
@@ -229,17 +188,49 @@ components:
           type: string
       description: Request
       type: object
-    RepayAuthEventData:
-      title: RepayAuthEventData
+    EventMetaData:
+      title: EventMetaData
       properties:
-        request:
-          $ref: '#/components/schemas/Request'
-        result:
-          $ref: '#/components/schemas/Result'
-        timestamp:
+        version:
           type: string
-          format: date-time
-      description: RepayAuthEventData
+        event_type:
+          type: string
+      description: EventMetaData
+      type: object
+    Result:
+      title: Result
+      properties:
+        host_code:
+          type: string
+        host_url:
+          type: string
+        last_batch_number:
+          type: string
+        message:
+          type: string
+        message1:
+          type: string
+        message2:
+          type: string
+        original_transaction_id:
+          type: string
+        pn_ref:
+          type: string
+        resp_msg:
+          type: string
+        result_code:
+          type: string
+        auth_code:
+          type: string
+        avs_result:
+          $ref: '#/components/schemas/AvsResult'
+        card_token:
+          type: string
+        commercial_card:
+          type: string
+        cv_result:
+          type: string
+      description: Result
       type: object
     AvsResult:
       title: AvsResult
@@ -254,25 +245,34 @@ components:
           type: string
       description: AvsResult
       type: object
-    EventMetaData:
-      title: EventMetaData
+    RepayPostbackResponse:
+      title: RepayPostbackResponse
       properties:
-        version:
+        Result:
           type: string
-        event_type:
-          type: string
-      description: EventMetaData
+      description: RepayPostbackResponse
       type: object
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
+    RepayAuthEventData:
+      title: RepayAuthEventData
+      properties:
+        request:
+          $ref: '#/components/schemas/Request'
+        result:
+          $ref: '#/components/schemas/Result'
+        timestamp:
+          type: string
+          format: date-time
+      description: RepayAuthEventData
+      type: object
+    RepayAuthPostback:
+      title: RepayAuthPostback
+      properties:
+        event_data:
+          $ref: '#/components/schemas/RepayAuthEventData'
+        event_meta_data:
+          $ref: '#/components/schemas/EventMetaData'
+      description: RepayAuthPostback
+      type: object
   securitySchemes:
     Bearer:
       type: apiKey

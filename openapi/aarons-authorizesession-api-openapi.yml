@@ -106,34 +106,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AuthorizeSession:
-      title: AuthorizeSession
-      properties:
-        SessionGuid:
-          type: string
-      description: AuthorizeSession
-      type: object
-    Dictionary_String_String_:
-      title: Dictionary<String,String>
-      additionalProperties:
-        type: string
-      description: Dictionary<String,String>
-      type: object
-    AuthorizeSessionResponse:
-      title: AuthorizeSessionResponse
-      properties:
-        ClientToken:
-          type: string
-        PublicKeyBase64:
-          type: string
-        PublicKey:
-          type: string
-        OneTimeUrl:
-          type: string
-        ResponseStatus:
-          $ref: '#/components/schemas/ResponseStatus'
-      description: AuthorizeSessionResponse
-      type: object
     ResponseStatus:
       title: ResponseStatus
       properties:
@@ -163,6 +135,34 @@ components:
         Meta:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
+      type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
+    AuthorizeSessionResponse:
+      title: AuthorizeSessionResponse
+      properties:
+        ClientToken:
+          type: string
+        PublicKeyBase64:
+          type: string
+        PublicKey:
+          type: string
+        OneTimeUrl:
+          type: string
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: AuthorizeSessionResponse
+      type: object
+    AuthorizeSession:
+      title: AuthorizeSession
+      properties:
+        SessionGuid:
+          type: string
+      description: AuthorizeSession
       type: object
   parameters:
     Accept:

@@ -98,6 +98,36 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ResponseStatus:
+      title: ResponseStatus
+      properties:
+        ErrorCode:
+          type: string
+        Message:
+          type: string
+        StackTrace:
+          type: string
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseError'
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseStatus
+      type: object
+    ResponseError:
+      title: ResponseError
+      properties:
+        ErrorCode:
+          type: string
+        FieldName:
+          type: string
+        Message:
+          type: string
+        Meta:
+          $ref: '#/components/schemas/Dictionary_String_String_'
+      description: ResponseError
+      type: object
     PaymentStatus:
       title: PaymentStatus
       properties:
@@ -119,23 +149,6 @@ components:
       additionalProperties:
         type: string
       description: Dictionary<String,String>
-      type: object
-    ResponseStatus:
-      title: ResponseStatus
-      properties:
-        ErrorCode:
-          type: string
-        Message:
-          type: string
-        StackTrace:
-          type: string
-        Errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResponseError'
-        Meta:
-          $ref: '#/components/schemas/Dictionary_String_String_'
-      description: ResponseStatus
       type: object
     PaymentResponse:
       title: PaymentResponse
@@ -170,19 +183,6 @@ components:
         ResponseStatus:
           $ref: '#/components/schemas/ResponseStatus'
       description: AutoPayCustomerRetryResponse
-      type: object
-    ResponseError:
-      title: ResponseError
-      properties:
-        ErrorCode:
-          type: string
-        FieldName:
-          type: string
-        Message:
-          type: string
-        Meta:
-          $ref: '#/components/schemas/Dictionary_String_String_'
-      description: ResponseError
       type: object
     AutoPayCustomerRetry:
       title: AutoPayCustomerRetry
