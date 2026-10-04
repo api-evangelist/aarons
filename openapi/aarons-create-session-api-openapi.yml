@@ -105,7 +105,24 @@ paths:
       summary: Create session2 delete
       x-summary-source: derived
 components:
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   schemas:
+    CreateSession:
+      title: CreateSession
+      properties:
+        SessionItem:
+          $ref: '#/components/schemas/SessionItem'
+      description: CreateSession
+      type: object
     CreateSessionResponse:
       title: CreateSessionResponse
       properties:
@@ -118,13 +135,6 @@ components:
           type: string
           format: date-time
       description: CreateSessionResponse
-      type: object
-    CreateSession:
-      title: CreateSession
-      properties:
-        SessionItem:
-          $ref: '#/components/schemas/SessionItem'
-      description: CreateSession
       type: object
     SessionItem:
       title: SessionItem
@@ -157,16 +167,6 @@ components:
           type: string
       description: SessionItem
       type: object
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

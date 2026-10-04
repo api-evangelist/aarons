@@ -153,6 +153,57 @@ components:
           type: string
       description: CustomFields
       type: object
+    RepayAuthPostback:
+      title: RepayAuthPostback
+      properties:
+        event_data:
+          $ref: '#/components/schemas/RepayAuthEventData'
+        event_meta_data:
+          $ref: '#/components/schemas/EventMetaData'
+      description: RepayAuthPostback
+      type: object
+    Result:
+      title: Result
+      properties:
+        host_code:
+          type: string
+        host_url:
+          type: string
+        last_batch_number:
+          type: string
+        message:
+          type: string
+        message1:
+          type: string
+        message2:
+          type: string
+        original_transaction_id:
+          type: string
+        pn_ref:
+          type: string
+        resp_msg:
+          type: string
+        result_code:
+          type: string
+        auth_code:
+          type: string
+        avs_result:
+          $ref: '#/components/schemas/AvsResult'
+        card_token:
+          type: string
+        commercial_card:
+          type: string
+        cv_result:
+          type: string
+      description: Result
+      type: object
+    RepayPostbackResponse:
+      title: RepayPostbackResponse
+      properties:
+        Result:
+          type: string
+      description: RepayPostbackResponse
+      type: object
     Request:
       title: Request
       properties:
@@ -197,40 +248,17 @@ components:
           type: string
       description: EventMetaData
       type: object
-    Result:
-      title: Result
+    RepayAuthEventData:
+      title: RepayAuthEventData
       properties:
-        host_code:
+        request:
+          $ref: '#/components/schemas/Request'
+        result:
+          $ref: '#/components/schemas/Result'
+        timestamp:
           type: string
-        host_url:
-          type: string
-        last_batch_number:
-          type: string
-        message:
-          type: string
-        message1:
-          type: string
-        message2:
-          type: string
-        original_transaction_id:
-          type: string
-        pn_ref:
-          type: string
-        resp_msg:
-          type: string
-        result_code:
-          type: string
-        auth_code:
-          type: string
-        avs_result:
-          $ref: '#/components/schemas/AvsResult'
-        card_token:
-          type: string
-        commercial_card:
-          type: string
-        cv_result:
-          type: string
-      description: Result
+          format: date-time
+      description: RepayAuthEventData
       type: object
     AvsResult:
       title: AvsResult
@@ -244,34 +272,6 @@ components:
         street_match:
           type: string
       description: AvsResult
-      type: object
-    RepayPostbackResponse:
-      title: RepayPostbackResponse
-      properties:
-        Result:
-          type: string
-      description: RepayPostbackResponse
-      type: object
-    RepayAuthEventData:
-      title: RepayAuthEventData
-      properties:
-        request:
-          $ref: '#/components/schemas/Request'
-        result:
-          $ref: '#/components/schemas/Result'
-        timestamp:
-          type: string
-          format: date-time
-      description: RepayAuthEventData
-      type: object
-    RepayAuthPostback:
-      title: RepayAuthPostback
-      properties:
-        event_data:
-          $ref: '#/components/schemas/RepayAuthEventData'
-        event_meta_data:
-          $ref: '#/components/schemas/EventMetaData'
-      description: RepayAuthPostback
       type: object
   securitySchemes:
     Bearer:

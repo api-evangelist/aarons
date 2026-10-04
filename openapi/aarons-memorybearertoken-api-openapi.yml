@@ -97,7 +97,35 @@ paths:
       summary: Memory bearer token delete
       x-summary-source: derived
 components:
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   schemas:
+    MemoryBearerToken:
+      title: MemoryBearerToken
+      properties:
+        SessionGuid:
+          type: string
+      description: MemoryBearerToken
+      type: object
+    MemoryBearerTokenResponse:
+      title: MemoryBearerTokenResponse
+      properties:
+        BearerToken:
+          type: string
+        Result:
+          type: string
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: MemoryBearerTokenResponse
+      type: object
     ResponseStatus:
       title: ResponseStatus
       properties:
@@ -128,40 +156,12 @@ components:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
       type: object
-    MemoryBearerTokenResponse:
-      title: MemoryBearerTokenResponse
-      properties:
-        BearerToken:
-          type: string
-        Result:
-          type: string
-        ResponseStatus:
-          $ref: '#/components/schemas/ResponseStatus'
-      description: MemoryBearerTokenResponse
-      type: object
     Dictionary_String_String_:
       title: Dictionary<String,String>
       additionalProperties:
         type: string
       description: Dictionary<String,String>
       type: object
-    MemoryBearerToken:
-      title: MemoryBearerToken
-      properties:
-        SessionGuid:
-          type: string
-      description: MemoryBearerToken
-      type: object
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

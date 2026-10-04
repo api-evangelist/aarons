@@ -105,7 +105,35 @@ paths:
       summary: Memory token guid delete
       x-summary-source: derived
 components:
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   schemas:
+    MemoryTokenGuid:
+      title: MemoryTokenGuid
+      properties:
+        SessionGuid:
+          type: string
+      description: MemoryTokenGuid
+      type: object
+    MemoryTokenGuidResponse:
+      title: MemoryTokenGuidResponse
+      properties:
+        TokenGuid:
+          type: string
+        Result:
+          type: string
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: MemoryTokenGuidResponse
+      type: object
     ResponseStatus:
       title: ResponseStatus
       properties:
@@ -136,40 +164,12 @@ components:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
       type: object
-    MemoryTokenGuidResponse:
-      title: MemoryTokenGuidResponse
-      properties:
-        TokenGuid:
-          type: string
-        Result:
-          type: string
-        ResponseStatus:
-          $ref: '#/components/schemas/ResponseStatus'
-      description: MemoryTokenGuidResponse
-      type: object
     Dictionary_String_String_:
       title: Dictionary<String,String>
       additionalProperties:
         type: string
       description: Dictionary<String,String>
       type: object
-    MemoryTokenGuid:
-      title: MemoryTokenGuid
-      properties:
-        SessionGuid:
-          type: string
-      description: MemoryTokenGuid
-      type: object
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

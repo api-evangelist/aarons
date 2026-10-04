@@ -97,7 +97,24 @@ paths:
       summary: Update customer retry notification delete
       x-summary-source: derived
 components:
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   schemas:
+    UpdateCustomerRetryNotificationResponse:
+      title: UpdateCustomerRetryNotificationResponse
+      properties:
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: UpdateCustomerRetryNotificationResponse
+      type: object
     ResponseStatus:
       title: ResponseStatus
       properties:
@@ -128,6 +145,12 @@ components:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
       type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
     UpdateCustomerRetryNotification:
       title: UpdateCustomerRetryNotification
       properties:
@@ -135,29 +158,6 @@ components:
           type: string
       description: UpdateCustomerRetryNotification
       type: object
-    Dictionary_String_String_:
-      title: Dictionary<String,String>
-      additionalProperties:
-        type: string
-      description: Dictionary<String,String>
-      type: object
-    UpdateCustomerRetryNotificationResponse:
-      title: UpdateCustomerRetryNotificationResponse
-      properties:
-        ResponseStatus:
-          $ref: '#/components/schemas/ResponseStatus'
-      description: UpdateCustomerRetryNotificationResponse
-      type: object
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

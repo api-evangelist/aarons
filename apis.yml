@@ -311,8 +311,6 @@ apis:
   humanURL: https://www.aarons.com/apply
   baseURL: https://api.aarons.com/onboarding
   tags:
-  - Customer Data
-  tags_raw:
   - CUSTOMER DATA
   properties:
   - type: OpenAPI

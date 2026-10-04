@@ -137,7 +137,35 @@ paths:
       summary: Save device intelligence delete
       x-summary-source: derived
 components:
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   schemas:
+    SaveDeviceIntelligence:
+      title: SaveDeviceIntelligence
+      properties:
+        DeviceId:
+          type: string
+        NavigatorData:
+          type: string
+        TokenGuid:
+          type: string
+      description: SaveDeviceIntelligence
+      type: object
+    SaveDeviceIntelligenceResponse:
+      title: SaveDeviceIntelligenceResponse
+      properties:
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: SaveDeviceIntelligenceResponse
+      type: object
     ResponseStatus:
       title: ResponseStatus
       properties:
@@ -174,34 +202,6 @@ components:
         type: string
       description: Dictionary<String,String>
       type: object
-    SaveDeviceIntelligence:
-      title: SaveDeviceIntelligence
-      properties:
-        DeviceId:
-          type: string
-        NavigatorData:
-          type: string
-        TokenGuid:
-          type: string
-      description: SaveDeviceIntelligence
-      type: object
-    SaveDeviceIntelligenceResponse:
-      title: SaveDeviceIntelligenceResponse
-      properties:
-        ResponseStatus:
-          $ref: '#/components/schemas/ResponseStatus'
-      description: SaveDeviceIntelligenceResponse
-      type: object
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

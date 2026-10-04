@@ -233,7 +233,51 @@ paths:
       summary: Create token delete
       x-summary-source: derived
 components:
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   schemas:
+    DeliveryAddress:
+      title: DeliveryAddress
+      properties:
+        Address1:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        ZipCode:
+          type: string
+      description: DeliveryAddress
+      type: object
+    CreateTokenResponse:
+      title: CreateTokenResponse
+      properties:
+        CreditCardType:
+          type: string
+        Last4:
+          type: string
+        Expiration:
+          type: string
+        Result:
+          type: string
+        FirstName:
+          type: string
+        LastName:
+          type: string
+        DeliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        BINData:
+          type: string
+      description: CreateTokenResponse
+      type: object
     CreateToken:
       title: CreateToken
       properties:
@@ -257,50 +301,6 @@ components:
           type: string
       description: CreateToken
       type: object
-    CreateTokenResponse:
-      title: CreateTokenResponse
-      properties:
-        CreditCardType:
-          type: string
-        Last4:
-          type: string
-        Expiration:
-          type: string
-        Result:
-          type: string
-        FirstName:
-          type: string
-        LastName:
-          type: string
-        DeliveryAddress:
-          $ref: '#/components/schemas/DeliveryAddress'
-        BINData:
-          type: string
-      description: CreateTokenResponse
-      type: object
-    DeliveryAddress:
-      title: DeliveryAddress
-      properties:
-        Address1:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        ZipCode:
-          type: string
-      description: DeliveryAddress
-      type: object
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

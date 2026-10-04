@@ -205,7 +205,30 @@ paths:
       summary: Customer data2 delete
       x-summary-source: derived
 components:
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   schemas:
+    DeliveryAddress:
+      title: DeliveryAddress
+      properties:
+        Address1:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        ZipCode:
+          type: string
+      description: DeliveryAddress
+      type: object
     CustomerDataResponse:
       title: CustomerDataResponse
       properties:
@@ -227,19 +250,6 @@ components:
           type: string
       description: CustomerDataResponse
       type: object
-    DeliveryAddress:
-      title: DeliveryAddress
-      properties:
-        Address1:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        ZipCode:
-          type: string
-      description: DeliveryAddress
-      type: object
     CustomerData:
       title: CustomerData
       properties:
@@ -260,16 +270,6 @@ components:
           type: string
       description: CustomerData
       type: object
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

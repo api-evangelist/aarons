@@ -105,7 +105,39 @@ paths:
       summary: Authorize session delete
       x-summary-source: derived
 components:
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   schemas:
+    AuthorizeSession:
+      title: AuthorizeSession
+      properties:
+        SessionGuid:
+          type: string
+      description: AuthorizeSession
+      type: object
+    AuthorizeSessionResponse:
+      title: AuthorizeSessionResponse
+      properties:
+        ClientToken:
+          type: string
+        PublicKeyBase64:
+          type: string
+        PublicKey:
+          type: string
+        OneTimeUrl:
+          type: string
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: AuthorizeSessionResponse
+      type: object
     ResponseStatus:
       title: ResponseStatus
       properties:
@@ -142,38 +174,6 @@ components:
         type: string
       description: Dictionary<String,String>
       type: object
-    AuthorizeSessionResponse:
-      title: AuthorizeSessionResponse
-      properties:
-        ClientToken:
-          type: string
-        PublicKeyBase64:
-          type: string
-        PublicKey:
-          type: string
-        OneTimeUrl:
-          type: string
-        ResponseStatus:
-          $ref: '#/components/schemas/ResponseStatus'
-      description: AuthorizeSessionResponse
-      type: object
-    AuthorizeSession:
-      title: AuthorizeSession
-      properties:
-        SessionGuid:
-          type: string
-      description: AuthorizeSession
-      type: object
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

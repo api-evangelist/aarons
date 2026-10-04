@@ -213,6 +213,15 @@ components:
           $ref: '#/components/schemas/AVS'
       description: ZeroDollarAuth
       type: object
+    Expiration:
+      title: Expiration
+      properties:
+        Month:
+          type: string
+        Year:
+          type: string
+      description: Expiration
+      type: object
     AVS:
       title: AVS
       properties:
@@ -224,14 +233,12 @@ components:
           type: string
       description: AVS
       type: object
-    Expiration:
-      title: Expiration
+    FiservPostbackResponse:
+      title: FiservPostbackResponse
       properties:
-        Month:
+        Result:
           type: string
-        Year:
-          type: string
-      description: Expiration
+      description: FiservPostbackResponse
       type: object
     FiservPostback:
       title: FiservPostback
@@ -251,13 +258,6 @@ components:
         ZeroDollarAuth:
           $ref: '#/components/schemas/ZeroDollarAuth'
       description: FiservPostback
-      type: object
-    FiservPostbackResponse:
-      title: FiservPostbackResponse
-      properties:
-        Result:
-          type: string
-      description: FiservPostbackResponse
       type: object
     Card:
       title: Card

@@ -143,6 +143,15 @@ components:
           type: string
       description: SaveTokenResponse
       type: object
+    SaveToken:
+      title: SaveToken
+      properties:
+        SessionGuid:
+          type: string
+        TermsVersion:
+          type: string
+      description: SaveToken
+      type: object
     DeliveryAddress:
       title: DeliveryAddress
       properties:
@@ -155,15 +164,6 @@ components:
         ZipCode:
           type: string
       description: DeliveryAddress
-      type: object
-    SaveToken:
-      title: SaveToken
-      properties:
-        SessionGuid:
-          type: string
-        TermsVersion:
-          type: string
-      description: SaveToken
       type: object
   parameters:
     Accept:
