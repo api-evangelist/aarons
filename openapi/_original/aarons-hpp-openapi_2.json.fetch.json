@@ -1,0 +1,12 @@
+{
+ "url": "https://hpp.aarons.com/openapi.json",
+ "requested_url": "https://hpp.aarons.com/openapi.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 44322,
+ "sha256": "a181d9b6c9563b57936a277a2378bb2e2c7b7b0e77915325e2f53bff11077208",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
