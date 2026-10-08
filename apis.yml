@@ -322,6 +322,8 @@ apis:
   - type: Website
     url: https://hpp.aarons.com/openapi.json
 common:
+- type: FinOps
+  url: finops/aarons-finops.yml
 - type: OpenAPI
   url: openapi/_original/aarons-hpp-openapi.json
 - type: WellKnown
