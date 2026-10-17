@@ -113,62 +113,7 @@ paths:
       summary: Repay card vault postback delete
       x-summary-source: derived
 components:
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   schemas:
-    CustomFields:
-      title: CustomFields
-      properties:
-        PaymentChannel:
-          type: string
-        MultiPay:
-          type: string
-        SavePaymentMethod:
-          type: string
-        Brand:
-          type: string
-        StoreNumber:
-          type: string
-        ConvenienceFee:
-          type: string
-        CustomerSave:
-          type: string
-        SaveMyCard:
-          type: string
-        CustomerStreet:
-          type: string
-        CustomerCity:
-          type: string
-        CustomerState:
-          type: string
-        CustomerZip:
-          type: string
-      description: CustomFields
-      type: object
-    RepayCardVaultPostback:
-      title: RepayCardVaultPostback
-      properties:
-        event_data:
-          $ref: '#/components/schemas/CardVaultEventData'
-        event_meta_data:
-          $ref: '#/components/schemas/EventMetaData'
-      description: RepayCardVaultPostback
-      type: object
-    RepayPostbackResponse:
-      title: RepayPostbackResponse
-      properties:
-        Result:
-          type: string
-      description: RepayPostbackResponse
-      type: object
     CardVaultEventData:
       title: CardVaultEventData
       properties:
@@ -214,6 +159,61 @@ components:
           type: string
       description: EventMetaData
       type: object
+    RepayCardVaultPostback:
+      title: RepayCardVaultPostback
+      properties:
+        event_data:
+          $ref: '#/components/schemas/CardVaultEventData'
+        event_meta_data:
+          $ref: '#/components/schemas/EventMetaData'
+      description: RepayCardVaultPostback
+      type: object
+    CustomFields:
+      title: CustomFields
+      properties:
+        PaymentChannel:
+          type: string
+        MultiPay:
+          type: string
+        SavePaymentMethod:
+          type: string
+        Brand:
+          type: string
+        StoreNumber:
+          type: string
+        ConvenienceFee:
+          type: string
+        CustomerSave:
+          type: string
+        SaveMyCard:
+          type: string
+        CustomerStreet:
+          type: string
+        CustomerCity:
+          type: string
+        CustomerState:
+          type: string
+        CustomerZip:
+          type: string
+      description: CustomFields
+      type: object
+    RepayPostbackResponse:
+      title: RepayPostbackResponse
+      properties:
+        Result:
+          type: string
+      description: RepayPostbackResponse
+      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

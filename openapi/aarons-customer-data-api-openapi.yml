@@ -205,17 +205,27 @@ paths:
       summary: Customer data2 delete
       x-summary-source: derived
 components:
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   schemas:
+    CustomerData:
+      title: CustomerData
+      properties:
+        ApplicationId:
+          type: integer
+          format: int32
+        Email:
+          type: string
+        Language:
+          type: string
+        SaveOnFile:
+          type: boolean
+        SessionGuid:
+          type: string
+        TermsVersion:
+          type: string
+        TokenGuid:
+          type: string
+      description: CustomerData
+      type: object
     DeliveryAddress:
       title: DeliveryAddress
       properties:
@@ -250,26 +260,16 @@ components:
           type: string
       description: CustomerDataResponse
       type: object
-    CustomerData:
-      title: CustomerData
-      properties:
-        ApplicationId:
-          type: integer
-          format: int32
-        Email:
-          type: string
-        Language:
-          type: string
-        SaveOnFile:
-          type: boolean
-        SessionGuid:
-          type: string
-        TermsVersion:
-          type: string
-        TokenGuid:
-          type: string
-      description: CustomerData
-      type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

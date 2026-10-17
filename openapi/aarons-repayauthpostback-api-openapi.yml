@@ -113,54 +113,19 @@ paths:
       summary: Repay auth postback delete
       x-summary-source: derived
 components:
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   schemas:
-    CustomFields:
-      title: CustomFields
+    AvsResult:
+      title: AvsResult
       properties:
-        PaymentChannel:
+        avs_response:
           type: string
-        MultiPay:
+        avs_response_msg:
           type: string
-        SavePaymentMethod:
+        zip_match:
           type: string
-        Brand:
+        street_match:
           type: string
-        StoreNumber:
-          type: string
-        ConvenienceFee:
-          type: string
-        CustomerSave:
-          type: string
-        SaveMyCard:
-          type: string
-        CustomerStreet:
-          type: string
-        CustomerCity:
-          type: string
-        CustomerState:
-          type: string
-        CustomerZip:
-          type: string
-      description: CustomFields
-      type: object
-    RepayAuthPostback:
-      title: RepayAuthPostback
-      properties:
-        event_data:
-          $ref: '#/components/schemas/RepayAuthEventData'
-        event_meta_data:
-          $ref: '#/components/schemas/EventMetaData'
-      description: RepayAuthPostback
+      description: AvsResult
       type: object
     Result:
       title: Result
@@ -197,12 +162,26 @@ components:
           type: string
       description: Result
       type: object
-    RepayPostbackResponse:
-      title: RepayPostbackResponse
+    EventMetaData:
+      title: EventMetaData
       properties:
-        Result:
+        version:
           type: string
-      description: RepayPostbackResponse
+        event_type:
+          type: string
+      description: EventMetaData
+      type: object
+    RepayAuthEventData:
+      title: RepayAuthEventData
+      properties:
+        request:
+          $ref: '#/components/schemas/Request'
+        result:
+          $ref: '#/components/schemas/Result'
+        timestamp:
+          type: string
+          format: date-time
+      description: RepayAuthEventData
       type: object
     Request:
       title: Request
@@ -239,40 +218,61 @@ components:
           type: string
       description: Request
       type: object
-    EventMetaData:
-      title: EventMetaData
+    RepayAuthPostback:
+      title: RepayAuthPostback
       properties:
-        version:
-          type: string
-        event_type:
-          type: string
-      description: EventMetaData
+        event_data:
+          $ref: '#/components/schemas/RepayAuthEventData'
+        event_meta_data:
+          $ref: '#/components/schemas/EventMetaData'
+      description: RepayAuthPostback
       type: object
-    RepayAuthEventData:
-      title: RepayAuthEventData
+    CustomFields:
+      title: CustomFields
       properties:
-        request:
-          $ref: '#/components/schemas/Request'
-        result:
-          $ref: '#/components/schemas/Result'
-        timestamp:
+        PaymentChannel:
           type: string
-          format: date-time
-      description: RepayAuthEventData
+        MultiPay:
+          type: string
+        SavePaymentMethod:
+          type: string
+        Brand:
+          type: string
+        StoreNumber:
+          type: string
+        ConvenienceFee:
+          type: string
+        CustomerSave:
+          type: string
+        SaveMyCard:
+          type: string
+        CustomerStreet:
+          type: string
+        CustomerCity:
+          type: string
+        CustomerState:
+          type: string
+        CustomerZip:
+          type: string
+      description: CustomFields
       type: object
-    AvsResult:
-      title: AvsResult
+    RepayPostbackResponse:
+      title: RepayPostbackResponse
       properties:
-        avs_response:
+        Result:
           type: string
-        avs_response_msg:
-          type: string
-        zip_match:
-          type: string
-        street_match:
-          type: string
-      description: AvsResult
+      description: RepayPostbackResponse
       type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

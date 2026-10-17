@@ -116,12 +116,11 @@ components:
         enum:
         - application/json
   schemas:
-    AuthorizeSession:
-      title: AuthorizeSession
-      properties:
-        SessionGuid:
-          type: string
-      description: AuthorizeSession
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
       type: object
     AuthorizeSessionResponse:
       title: AuthorizeSessionResponse
@@ -168,11 +167,12 @@ components:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
       type: object
-    Dictionary_String_String_:
-      title: Dictionary<String,String>
-      additionalProperties:
-        type: string
-      description: Dictionary<String,String>
+    AuthorizeSession:
+      title: AuthorizeSession
+      properties:
+        SessionGuid:
+          type: string
+      description: AuthorizeSession
       type: object
   securitySchemes:
     Bearer:

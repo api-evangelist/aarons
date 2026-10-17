@@ -193,16 +193,6 @@ paths:
       summary: Fiserv postback delete
       x-summary-source: derived
 components:
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   schemas:
     ZeroDollarAuth:
       title: ZeroDollarAuth
@@ -212,26 +202,6 @@ components:
         AVS:
           $ref: '#/components/schemas/AVS'
       description: ZeroDollarAuth
-      type: object
-    Expiration:
-      title: Expiration
-      properties:
-        Month:
-          type: string
-        Year:
-          type: string
-      description: Expiration
-      type: object
-    AVS:
-      title: AVS
-      properties:
-        StreetMatch:
-          type: string
-        PostalCodeMatch:
-          type: string
-        AssociationAvsResponse:
-          type: string
-      description: AVS
       type: object
     FiservPostbackResponse:
       title: FiservPostbackResponse
@@ -258,6 +228,26 @@ components:
         ZeroDollarAuth:
           $ref: '#/components/schemas/ZeroDollarAuth'
       description: FiservPostback
+      type: object
+    Expiration:
+      title: Expiration
+      properties:
+        Month:
+          type: string
+        Year:
+          type: string
+      description: Expiration
+      type: object
+    AVS:
+      title: AVS
+      properties:
+        StreetMatch:
+          type: string
+        PostalCodeMatch:
+          type: string
+        AssociationAvsResponse:
+          type: string
+      description: AVS
       type: object
     Card:
       title: Card
@@ -286,6 +276,16 @@ components:
           type: string
       description: Card
       type: object
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

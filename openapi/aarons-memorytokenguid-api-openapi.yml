@@ -116,23 +116,11 @@ components:
         enum:
         - application/json
   schemas:
-    MemoryTokenGuid:
-      title: MemoryTokenGuid
-      properties:
-        SessionGuid:
-          type: string
-      description: MemoryTokenGuid
-      type: object
-    MemoryTokenGuidResponse:
-      title: MemoryTokenGuidResponse
-      properties:
-        TokenGuid:
-          type: string
-        Result:
-          type: string
-        ResponseStatus:
-          $ref: '#/components/schemas/ResponseStatus'
-      description: MemoryTokenGuidResponse
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
       type: object
     ResponseStatus:
       title: ResponseStatus
@@ -164,11 +152,23 @@ components:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
       type: object
-    Dictionary_String_String_:
-      title: Dictionary<String,String>
-      additionalProperties:
-        type: string
-      description: Dictionary<String,String>
+    MemoryTokenGuidResponse:
+      title: MemoryTokenGuidResponse
+      properties:
+        TokenGuid:
+          type: string
+        Result:
+          type: string
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: MemoryTokenGuidResponse
+      type: object
+    MemoryTokenGuid:
+      title: MemoryTokenGuid
+      properties:
+        SessionGuid:
+          type: string
+      description: MemoryTokenGuid
       type: object
   securitySchemes:
     Bearer:

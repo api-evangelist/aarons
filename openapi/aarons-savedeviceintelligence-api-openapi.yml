@@ -148,16 +148,11 @@ components:
         enum:
         - application/json
   schemas:
-    SaveDeviceIntelligence:
-      title: SaveDeviceIntelligence
-      properties:
-        DeviceId:
-          type: string
-        NavigatorData:
-          type: string
-        TokenGuid:
-          type: string
-      description: SaveDeviceIntelligence
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
       type: object
     SaveDeviceIntelligenceResponse:
       title: SaveDeviceIntelligenceResponse
@@ -183,6 +178,17 @@ components:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseStatus
       type: object
+    SaveDeviceIntelligence:
+      title: SaveDeviceIntelligence
+      properties:
+        DeviceId:
+          type: string
+        NavigatorData:
+          type: string
+        TokenGuid:
+          type: string
+      description: SaveDeviceIntelligence
+      type: object
     ResponseError:
       title: ResponseError
       properties:
@@ -195,12 +201,6 @@ components:
         Meta:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
-      type: object
-    Dictionary_String_String_:
-      title: Dictionary<String,String>
-      additionalProperties:
-        type: string
-      description: Dictionary<String,String>
       type: object
   securitySchemes:
     Bearer:

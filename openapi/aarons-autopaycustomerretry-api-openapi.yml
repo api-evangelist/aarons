@@ -97,60 +97,22 @@ paths:
       summary: Auto pay customer retry delete
       x-summary-source: derived
 components:
+  parameters:
+    Accept:
+      name: Accept
+      in: header
+      description: Accept Header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
   schemas:
-    PaymentStatus:
-      title: PaymentStatus
-      properties:
-        Status:
-          type: string
-        CreditCardPaymentStatusId:
-          type: integer
-          format: int32
-        CreditCardProcessorStatusId:
-          type: integer
-          format: int32
-        CreditCardPaymentResponseStatusId:
-          type: integer
-          format: int32
-      description: PaymentStatus
-      type: object
     Dictionary_String_String_:
       title: Dictionary<String,String>
       additionalProperties:
         type: string
       description: Dictionary<String,String>
-      type: object
-    PaymentResponse:
-      title: PaymentResponse
-      properties:
-        PaymentGuid:
-          type: string
-        PaymentStatus:
-          $ref: '#/components/schemas/PaymentStatus'
-        IsDuplicate:
-          type: boolean
-        AuthorizationCode:
-          type: string
-        PaymentDateTime:
-          type: string
-          format: date-time
-        ReferenceNumber:
-          type: integer
-          format: int64
-        IsRetryable:
-          type: boolean
-        PaymentResponseMessage:
-          type: string
-        MaskedAccountNumber:
-          type: string
-      description: PaymentResponse
-      type: object
-    AutoPayCustomerRetry:
-      title: AutoPayCustomerRetry
-      properties:
-        PaymentGuid:
-          type: string
-      description: AutoPayCustomerRetry
       type: object
     ResponseStatus:
       title: ResponseStatus
@@ -182,6 +144,54 @@ components:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
       type: object
+    AutoPayCustomerRetry:
+      title: AutoPayCustomerRetry
+      properties:
+        PaymentGuid:
+          type: string
+      description: AutoPayCustomerRetry
+      type: object
+    PaymentResponse:
+      title: PaymentResponse
+      properties:
+        PaymentGuid:
+          type: string
+        PaymentStatus:
+          $ref: '#/components/schemas/PaymentStatus'
+        IsDuplicate:
+          type: boolean
+        AuthorizationCode:
+          type: string
+        PaymentDateTime:
+          type: string
+          format: date-time
+        ReferenceNumber:
+          type: integer
+          format: int64
+        IsRetryable:
+          type: boolean
+        PaymentResponseMessage:
+          type: string
+        MaskedAccountNumber:
+          type: string
+      description: PaymentResponse
+      type: object
+    PaymentStatus:
+      title: PaymentStatus
+      properties:
+        Status:
+          type: string
+        CreditCardPaymentStatusId:
+          type: integer
+          format: int32
+        CreditCardProcessorStatusId:
+          type: integer
+          format: int32
+        CreditCardPaymentResponseStatusId:
+          type: integer
+          format: int32
+      description: PaymentStatus
+      type: object
     AutoPayCustomerRetryResponse:
       title: AutoPayCustomerRetryResponse
       properties:
@@ -191,16 +201,6 @@ components:
           $ref: '#/components/schemas/ResponseStatus'
       description: AutoPayCustomerRetryResponse
       type: object
-  parameters:
-    Accept:
-      name: Accept
-      in: header
-      description: Accept Header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
   securitySchemes:
     Bearer:
       type: apiKey

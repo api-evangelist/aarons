@@ -108,23 +108,11 @@ components:
         enum:
         - application/json
   schemas:
-    MemoryBearerToken:
-      title: MemoryBearerToken
-      properties:
-        SessionGuid:
-          type: string
-      description: MemoryBearerToken
-      type: object
-    MemoryBearerTokenResponse:
-      title: MemoryBearerTokenResponse
-      properties:
-        BearerToken:
-          type: string
-        Result:
-          type: string
-        ResponseStatus:
-          $ref: '#/components/schemas/ResponseStatus'
-      description: MemoryBearerTokenResponse
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
       type: object
     ResponseStatus:
       title: ResponseStatus
@@ -156,11 +144,23 @@ components:
           $ref: '#/components/schemas/Dictionary_String_String_'
       description: ResponseError
       type: object
-    Dictionary_String_String_:
-      title: Dictionary<String,String>
-      additionalProperties:
-        type: string
-      description: Dictionary<String,String>
+    MemoryBearerToken:
+      title: MemoryBearerToken
+      properties:
+        SessionGuid:
+          type: string
+      description: MemoryBearerToken
+      type: object
+    MemoryBearerTokenResponse:
+      title: MemoryBearerTokenResponse
+      properties:
+        BearerToken:
+          type: string
+        Result:
+          type: string
+        ResponseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+      description: MemoryBearerTokenResponse
       type: object
   securitySchemes:
     Bearer:
