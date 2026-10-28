@@ -1,4 +1,4 @@
-# Aaron's (aarons)
+# Aaron's
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,98 +66,143 @@
 
 Aaron's is a lease-to-own retailer of furniture, consumer electronics, home appliances, and accessories serving customers across the United States and Canada. They provide flexible payment options including rent-to-own leasing with instant approval, online account management, and EZPay automatic payments.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/aarons/refs/heads/main/apis.yml)
+**Areas:** Lease-to-Own · Retail · Furniture · Electronics · Appliances · Consumer Finance · Fortune 1000
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Aaron's on APIs.io
 
-## Tags:
+Everything profiled for Aaron's is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aarons/](https://apis.io/providers/aarons/)** — or go straight to one of the APIs or properties below.
 
- - Lease-to-Own, Retail, Furniture, Electronics, Appliances, Consumer Finance
+### APIs (17)
 
-## Timestamps
+- [Aaron's Lease Application](https://apis.io/apis/aarons/aarons-lease-application/) — Aaron's online lease application and approval system enabling customers to apply for lease-to-own financing before shopping. Provides instant approval…
+- [Aaron's Account Management](https://apis.io/apis/aarons/aarons-account-management/) — Aaron's online account management portal for customers to manage their lease accounts, make payments, set up EZPay automatic payments, track orders, and…
+- [Aaron's Product Catalog](https://apis.io/apis/aarons/aarons-product-catalog/) — Aaron's lease-to-own product catalog covering furniture (bedroom, living room, dining), electronics (TVs, laptops, gaming), and appliances (washers, dryers,…
+- [Aaron's Authorize Session API](https://apis.io/apis/aarons/aarons-authorizesession-api/) — The AuthorizeSession API from Aaron's — 1 operation(s) for authorizesession.
+- [Aaron's Auto Pay Customer Retry API](https://apis.io/apis/aarons/aarons-autopaycustomerretry-api/) — The AutoPayCustomerRetry API from Aaron's — 1 operation(s) for autopaycustomerretry.
+- [Aaron's Create Token API](https://apis.io/apis/aarons/aarons-createtoken-api/) — The CreateToken API from Aaron's — 1 operation(s) for createtoken.
+- [Aaron's Fiserv Postback API](https://apis.io/apis/aarons/aarons-fiservpostback-api/) — The FiservPostback API from Aaron's — 1 operation(s) for fiservpostback.
+- [Aaron's Memory Bearer Token API](https://apis.io/apis/aarons/aarons-memorybearertoken-api/) — The MemoryBearerToken API from Aaron's — 1 operation(s) for memorybearertoken.
+- [Aaron's Memory Token Guid API](https://apis.io/apis/aarons/aarons-memorytokenguid-api/) — The MemoryTokenGuid API from Aaron's — 1 operation(s) for memorytokenguid.
+- [Aaron's Ping API](https://apis.io/apis/aarons/aarons-ping-api/) — The ping API from Aaron's — 2 operation(s) for ping.
+- [Aaron's Repay Auth Postback API](https://apis.io/apis/aarons/aarons-repayauthpostback-api/) — The RepayAuthPostback API from Aaron's — 1 operation(s) for repayauthpostback.
+- [Aaron's Repay Card Vault Postback API](https://apis.io/apis/aarons/aarons-repaycardvaultpostback-api/) — The RepayCardVaultPostback API from Aaron's — 1 operation(s) for repaycardvaultpostback.
+- [Aaron's Save Device Intelligence API](https://apis.io/apis/aarons/aarons-savedeviceintelligence-api/) — The SaveDeviceIntelligence API from Aaron's — 1 operation(s) for savedeviceintelligence.
+- [Aaron's Save Token API](https://apis.io/apis/aarons/aarons-savetoken-api/) — The SaveToken API from Aaron's — 1 operation(s) for savetoken.
+- [Aaron's Update Customer Retry Notification API](https://apis.io/apis/aarons/aarons-updatecustomerretrynotification-api/) — The UpdateCustomerRetryNotification API from Aaron's — 1 operation(s) for updatecustomerretrynotification.
+- [Aaron's Create Session API](https://apis.io/apis/aarons/aarons-create-session-api/) — The Create Session API from Aaron's — 1 operation(s) for create session.
+- [Aaron's CUSTOMER DATA API](https://apis.io/apis/aarons/aarons-customer-data-api/) — The CUSTOMER DATA API from Aaron's — 1 operation(s) for customer data.
 
-- **Created:** 2026-04-19
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Aaron's Lease Application
-Aaron's online lease application and approval system enabling customers to apply for lease-to-own financing before shopping. Provides instant approval decisions and leasing power discovery for furniture, electronics, and appliances.
+#### AsyncAPI (1)
 
-**Human URL:** [https://www.aarons.com/apply](https://www.aarons.com/apply)
+Event-driven and webhook contracts.
 
-#### Tags:
+- [Aarons Hpp Webhooks](https://apis.io/asyncapis/aarons/aarons-hpp-webhooks/)
 
- - Lease-to-Own, Consumer Finance, Credit, Applications
+#### MCP servers (1)
 
-#### Properties
+Model Context Protocol servers that expose the API to agents.
 
-- [Documentation](https://www.aarons.com/apply)
+- [aarons-mcp.yml](https://apis.io/servers/aarons/aarons-mcp-yml/)
 
-### Aaron's Account Management
-Aaron's online account management portal for customers to manage their lease accounts, make payments, set up EZPay automatic payments, track orders, and manage lease and payment information.
+#### Overlays (1)
 
-**Human URL:** [https://www.aarons.com](https://www.aarons.com)
+OpenAPI overlays, including conversational phrasing for each operation.
 
-#### Tags:
+- [Aarons Hpp Overlay](https://apis.io/overlays/aarons/aarons-hpp-overlay/)
 
- - Account Management, Payments, Lease Management
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://www.aarons.com)
+- [Aarons Authentication](https://apis.io/security/aarons/aarons-authentication/)
+- [Aarons Domain Security](https://apis.io/security/aarons/aarons-domain-security/)
 
-### Aaron's Product Catalog
-Aaron's lease-to-own product catalog covering furniture (bedroom, living room, dining), electronics (TVs, laptops, gaming), and appliances (washers, dryers, refrigerators) from top brands including Ashley Furniture, Samsung, Sony, and GE. Includes clearance and previously leased inventory.
+#### OAuth scopes (1)
 
-**Human URL:** [https://www.aarons.com](https://www.aarons.com)
+The permissions the API asks for.
 
-#### Tags:
+- [Aarons Scopes](https://apis.io/scopes/aarons/aarons-scopes/)
 
- - Retail, Furniture, Electronics, Appliances, Lease-to-Own
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://www.aarons.com)
+- [Aarons Plans Pricing](https://apis.io/plans/aarons/aarons-plans-pricing/)
 
-## Common Properties
+#### Rate limits (1)
+
+Published request limits.
+
+- [Aarons Rate Limits](https://apis.io/rate-limits/aarons/aarons-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Aarons Finops](https://apis.io/finops/aarons/aarons-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.aarons.com)
-- [Login](https://www.aarons.com/account/login)
-- [SignUp](https://www.aarons.com/apply)
+- [Support](https://www.aarons.com/contact)
+- [Terms of service](https://www.aarons.com/terms-of-service.html)
+- [Privacy policy](https://www.aarons.com/privacy-policy.html)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Instant Lease Approval | Online lease application with instant approval for customers to discover their leasing power before shopping in-store or online. |
-| EZPay Automatic Payments | Automatic payment setup (EZPay) for convenient, scheduled lease payment processing without manual intervention. |
-| Online Payment Processing | Online payment portal for customers to make one-time or recurring lease payments through the Aaron's website. |
-| Express Delivery | Express delivery in 2-3 days for eligible products to customer homes, with professional installation and setup. |
-| Store Locator | Store locator to find nearby Aaron's locations for in-store shopping, pickup, and customer service. |
-| Account Management Portal | Online account portal for tracking orders, managing lease details, viewing payment history, and saving favorite products. |
-| Previously Leased Inventory | Clearance and previously leased product inventory available at reduced lease rates for budget-conscious customers. |
+**Kin Score 34.5** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 50.9 |
+| Contract governance | 18.2 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 18.5 |
+| Access clarity | 27.6 |
 
-| Name | Description |
-|------|-------------|
-| Furniture Lease-to-Own | Customers acquiring bedroom sets, sofas, sectionals, and dining furniture through flexible lease-to-own payment plans. |
-| Electronics Access | Consumers accessing TVs, laptops, gaming consoles, and audio equipment through affordable weekly or monthly lease payments. |
-| Appliance Leasing | Households obtaining washers, dryers, refrigerators, and ranges through lease-to-own options with delivery and installation. |
-| Credit-Challenged Consumer Financing | Consumers with limited or poor credit history accessing household goods through Aaron's flexible lease-to-own programs. |
-| Temporary Furnishing | Short-term furniture and appliance needs for relocating individuals or temporary housing situations via lease agreements. |
+**Agent readiness 33.3** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| Progressive Leasing | Aaron's Holdings subsidiary Progressive Leasing provides embedded lease-to-own solutions at third-party retail partner locations. |
-| BrandsMart USA | Aaron's Holdings subsidiary BrandsMart USA providing consumer electronics and appliance retail with lease-to-own financing. |
-| Google Tag Manager | Analytics and tracking integration via Google Tag Manager for website behavior analysis and marketing optimization. |
+**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
 
-## Maintainers
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aarons/](https://apis.io/providers/aarons/).
 
-**FN:** Kin Lane
+## How this profile is made
 
-**Email:** kin@apievangelist.com
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Aaron's: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aarons/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
