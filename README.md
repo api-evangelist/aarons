@@ -108,42 +108,49 @@ Model Context Protocol servers that expose the API to agents.
 
 - [aarons-mcp.yml](https://apis.io/servers/aarons/aarons-mcp-yml/)
 
-#### Overlays (1)
+#### Overlays (2)
 
 OpenAPI overlays, including conversational phrasing for each operation.
 
-- [Aarons Hpp Overlay](https://apis.io/overlays/aarons/aarons-hpp-overlay/)
+- [Aaron's Fiservpostback Api Certification Overlay](https://apis.io/overlays/aarons/aarons-fiservpostback-api-certification-overlay/)
+- [Aaron's Hpp Overlay](https://apis.io/overlays/aarons/aarons-hpp-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Aaron's API Rules](https://apis.io/rules/aarons/aarons-rules/)
 
 #### Security (2)
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Aarons Authentication](https://apis.io/security/aarons/aarons-authentication/)
-- [Aarons Domain Security](https://apis.io/security/aarons/aarons-domain-security/)
+- [Aaron's Authentication](https://apis.io/security/aarons/aarons-authentication/)
+- [Aaron's Domain Security](https://apis.io/security/aarons/aarons-domain-security/)
 
 #### OAuth scopes (1)
 
 The permissions the API asks for.
 
-- [Aarons Scopes](https://apis.io/scopes/aarons/aarons-scopes/)
+- [Aaron's Scopes](https://apis.io/scopes/aarons/aarons-scopes/)
 
 #### Plans and pricing (1)
 
 Published plans, tiers and prices.
 
-- [Aarons Plans Pricing](https://apis.io/plans/aarons/aarons-plans-pricing/)
+- [Aaron's Plans Pricing](https://apis.io/plans/aarons/aarons-plans-pricing/)
 
 #### Rate limits (1)
 
 Published request limits.
 
-- [Aarons Rate Limits](https://apis.io/rate-limits/aarons/aarons-rate-limits/)
+- [Aaron's Rate Limits](https://apis.io/rate-limits/aarons/aarons-rate-limits/)
 
 #### FinOps (1)
 
 What the API costs to run, by operation.
 
-- [Aarons Finops](https://apis.io/finops/aarons/aarons-finops/)
+- [Aaron's Finops](https://apis.io/finops/aarons/aarons-finops/)
 
 ## Where to find this API
 
@@ -156,18 +163,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 34.5** — thin · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 38.7** — thin · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
-| Discoverability | 71.4 |
-| Contract quality | 50.9 |
-| Contract governance | 18.2 |
-| Operational transparency | 7.9 |
+| Discoverability | 66.1 |
+| Contract quality | 55.3 |
+| Contract governance | 31.8 |
+| Operational transparency | 7.1 |
 | Developer ergonomics | 18.5 |
-| Access clarity | 27.6 |
+| Access clarity | 42.6 |
 
-**Agent readiness 33.3** — agent-ready
+**Agent readiness 34.0** — agent-ready
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -190,8 +197,14 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | yes |
 | Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
+**Regulatory alignment 28.4** — Horizontal (data, software, accessibility, platform)
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aarons/](https://apis.io/providers/aarons/).
 
